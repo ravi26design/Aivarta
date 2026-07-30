@@ -180,7 +180,7 @@
 
   const VSTEPS = [
     ['Choose Plan', 'pricing.html'],
-    ['Assign Number', 'agent-voice-number.html'],
+    ['Choose a Number', 'agent-voice-number.html'],
     ['Upload Knowledge', 'agent-voice-upload.html'],
     ['Configure Voice', 'agent-voice.html'],
     ['Go Live', 'agents.html']
