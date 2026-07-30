@@ -444,6 +444,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);transition:.15s}
 .mt-close:hover{background:rgba(255,255,255,.14);transform:rotate(90deg)}
 .mt-close svg{width:22px;height:22px}
+/* step chips stretch to fill the modal width */
+.setup-modal .dash-tabs{width:1360px}
+.setup-modal .steps{width:100%}
+.setup-modal .step{flex:1;width:auto;min-width:0}
+.setup-modal .step .lbl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 /* --- Voice call preview --- */
 .vcall{border:1px solid #ececec;border-radius:16px;overflow:hidden;height:560px;display:flex;flex-direction:column;background:#0b1220}

@@ -3,21 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1440">
-<title>AI VARTA — Assign Number (Voice Agent)</title>
-<link rel="stylesheet" href="css/styles.css?v=5">
+<title>AI VARTA — Choose a Number (Voice Agent)</title>
+<link rel="stylesheet" href="css/styles.css?v=6">
 <style>
-  .onb{height:1020px}
-  .onb .dhero{height:1020px}
+  .onb{height:1040px}
+  .onb .dhero{height:1040px}
   .dash-tabs{position:absolute;left:40px;top:112px}
   .onb-head{left:40px;top:196px;width:1360px}
   .onb-card{left:40px;top:326px;width:1360px}
-  .num-filter{display:flex;gap:14px;margin-bottom:20px}
-  .num-country{display:flex;align-items:center;gap:10px;border:1px solid #e2e4e8;border-radius:12px;height:50px;padding:0 16px;font-size:15px;font-weight:500}
-  .num-country .flag{width:22px;height:15px;border-radius:2px;overflow:hidden;display:flex;flex-direction:column}
-  .num-country .flag i{flex:1}.num-country .flag .o{background:#ff9933}.num-country .flag .w{background:#fff}.num-country .flag .g{background:#138808}
-  .num-search{flex:1;display:flex;align-items:center;gap:10px;border:1px solid #e2e4e8;border-radius:12px;height:50px;padding:0 16px;color:#9aa0a8;font-size:15px}
-  .num-search svg{width:18px;height:18px}
-  .num-list{display:flex;flex-direction:column;gap:12px}
+  .num-filter{display:flex;gap:14px;margin-bottom:20px;position:relative}
+  .num-country{position:relative;display:flex;align-items:center;gap:10px;border:1px solid #e2e4e8;border-radius:12px;height:50px;padding:0 16px;font-size:15px;font-weight:500;cursor:pointer;min-width:200px;user-select:none}
+  .num-country .flag{font-size:18px;line-height:1}
+  .num-country svg{margin-left:auto;width:16px;height:16px}
+  .country-menu{position:absolute;top:56px;left:0;width:280px;background:#fff;border:1px solid #e6e9ee;border-radius:12px;box-shadow:0 18px 44px rgba(16,24,40,.16);z-index:30;padding:6px;max-height:280px;overflow:auto}
+  .country-menu[hidden]{display:none}
+  .country-opt{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:8px;font-size:15px;cursor:pointer}
+  .country-opt:hover{background:#f4f7fb}
+  .country-opt.sel{background:#eef8ff;color:#0077b6;font-weight:600}
+  .country-opt .flag{font-size:18px}
+  .country-opt .code{margin-left:auto;color:#98a2b3;font-size:13px}
+  .num-search{flex:1;display:flex;align-items:center;gap:10px;border:1px solid #e2e4e8;border-radius:12px;height:50px;padding:0 16px}
+  .num-search svg{width:18px;height:18px;color:#9aa0a8;flex:none}
+  .num-search input{flex:1;border:none;outline:none;font-size:15px;font-family:inherit;background:transparent}
+  .num-search input::placeholder{color:#9aa0a8}
+  .num-list{display:flex;flex-direction:column;gap:12px;max-height:460px;overflow-y:auto;padding-right:4px}
   .num-item{display:flex;align-items:center;gap:16px;border:1px solid #e6e9ee;border-radius:14px;padding:16px 18px;cursor:pointer;transition:.15s}
   .num-item:hover{border-color:#9fd9f7}
   .num-item.sel{border-color:#00abff;background:#f6fcff;box-shadow:0 0 0 3px rgba(0,171,255,.12)}
@@ -32,9 +41,8 @@
   .num-tags{display:flex;gap:6px}
   .num-tag{font-size:11px;font-weight:600;padding:5px 10px;border-radius:6px;background:#f1f4f9;color:#475467}
   .num-tag.tollfree{background:#eafaf0;color:#0a9d52}
-  .num-price{text-align:right;min-width:96px}
-  .num-price .amt{font-weight:700;font-size:16px}
-  .num-price small{display:block;font-weight:400;font-size:11px;color:#98a2b3;margin-top:2px}
+  .num-empty{padding:40px 0;text-align:center;color:#98a2b3;font-size:15px}
+  .num-empty[hidden]{display:none}
   .num-save{display:flex;justify-content:flex-end;margin-top:24px}
   .num-save .btn-full{width:auto;min-width:230px;border-radius:80px}
 </style>
@@ -60,65 +68,122 @@
     <div class="divide"></div>
 
     <div class="num-filter">
-      <div class="num-country"><span class="flag"><i class="o"></i><i class="w"></i><i class="g"></i></span> India (+91)
-        <svg style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      <div class="num-country" id="countryBtn">
+        <span class="flag" id="curFlag">🇮🇳</span>
+        <span id="curLabel">India (+91)</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
       </div>
-      <div class="num-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>Search by city or area code…</div>
+      <div class="country-menu" id="countryMenu" hidden></div>
+      <div class="num-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+        <input id="numSearch" type="text" placeholder="Search by number, city or area code…">
+      </div>
     </div>
 
-    <div class="num-list" id="numList">
-      <div class="num-item sel">
-        <span class="num-radio"></span>
-        <span class="num-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5l4-1 2 5-3 2a12 12 0 006 6l2-3 5 2-1 4a2 2 0 01-2 2A16 16 0 013 7a2 2 0 011-2z"/></svg></span>
-        <div class="num-info"><div class="n">+91 80-4718-2200</div><div class="m">Bengaluru, Karnataka · Local number</div></div>
-        <div class="num-tags"><span class="num-tag">VOICE</span><span class="num-tag">SMS</span></div>
-        <div class="num-price"><span class="amt">₹499</span><small>/month</small></div>
-      </div>
-      <div class="num-item">
-        <span class="num-radio"></span>
-        <span class="num-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5l4-1 2 5-3 2a12 12 0 006 6l2-3 5 2-1 4a2 2 0 01-2 2A16 16 0 013 7a2 2 0 011-2z"/></svg></span>
-        <div class="num-info"><div class="n">+91 22-6150-3300</div><div class="m">Mumbai, Maharashtra · Local number</div></div>
-        <div class="num-tags"><span class="num-tag">VOICE</span></div>
-        <div class="num-price"><span class="amt">₹499</span><small>/month</small></div>
-      </div>
-      <div class="num-item">
-        <span class="num-radio"></span>
-        <span class="num-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5l4-1 2 5-3 2a12 12 0 006 6l2-3 5 2-1 4a2 2 0 01-2 2A16 16 0 013 7a2 2 0 011-2z"/></svg></span>
-        <div class="num-info"><div class="n">+91 11-4004-8800</div><div class="m">New Delhi · Local number</div></div>
-        <div class="num-tags"><span class="num-tag">VOICE</span><span class="num-tag">SMS</span></div>
-        <div class="num-price"><span class="amt">₹499</span><small>/month</small></div>
-      </div>
-      <div class="num-item">
-        <span class="num-radio"></span>
-        <span class="num-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5l4-1 2 5-3 2a12 12 0 006 6l2-3 5 2-1 4a2 2 0 01-2 2A16 16 0 013 7a2 2 0 011-2z"/></svg></span>
-        <div class="num-info"><div class="n">+91 1800-267-1234</div><div class="m">India · Toll-free number</div></div>
-        <div class="num-tags"><span class="num-tag tollfree">TOLL-FREE</span><span class="num-tag">VOICE</span></div>
-        <div class="num-price"><span class="amt">₹1,499</span><small>/month</small></div>
-      </div>
-      <div class="num-item">
-        <span class="num-radio"></span>
-        <span class="num-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5l4-1 2 5-3 2a12 12 0 006 6l2-3 5 2-1 4a2 2 0 01-2 2A16 16 0 013 7a2 2 0 011-2z"/></svg></span>
-        <div class="num-info"><div class="n">+91 40-6788-9900</div><div class="m">Hyderabad, Telangana · Local number</div></div>
-        <div class="num-tags"><span class="num-tag">VOICE</span></div>
-        <div class="num-price"><span class="amt">₹499</span><small>/month</small></div>
-      </div>
-    </div>
+    <div class="num-list" id="numList"></div>
+    <div class="num-empty" id="numEmpty" hidden>No numbers match your search. Try a different city or area code.</div>
 
     <div class="num-save">
       <a class="btn-full" href="agent-voice-upload.html">Assign &amp; Continue</a>
     </div>
   </div>
 </div>
-<script src="js/partials.js?v=5"></script>
+<script src="js/partials.js?v=6"></script>
 <script>
 (function(){
-  var items = Array.prototype.slice.call(document.querySelectorAll('#numList .num-item'));
-  items.forEach(function(it){
-    it.addEventListener('click', function(){
-      items.forEach(function(x){ x.classList.remove('sel'); });
-      it.classList.add('sel');
+  var COUNTRIES = [
+    {key:'in', flag:'🇮🇳', name:'India', code:'+91'},
+    {key:'us', flag:'🇺🇸', name:'United States', code:'+1'},
+    {key:'uk', flag:'🇬🇧', name:'United Kingdom', code:'+44'},
+    {key:'ae', flag:'🇦🇪', name:'United Arab Emirates', code:'+971'},
+    {key:'au', flag:'🇦🇺', name:'Australia', code:'+61'}
+  ];
+  var NUMBERS = [
+    {c:'in', num:'+91 80-4718-2200', loc:'Bengaluru, Karnataka · Local number', tags:['VOICE','SMS']},
+    {c:'in', num:'+91 22-6150-3300', loc:'Mumbai, Maharashtra · Local number', tags:['VOICE']},
+    {c:'in', num:'+91 11-4004-8800', loc:'New Delhi · Local number', tags:['VOICE','SMS']},
+    {c:'in', num:'+91 1800-267-1234', loc:'India · Toll-free number', tags:['TOLL-FREE','VOICE']},
+    {c:'in', num:'+91 40-6788-9900', loc:'Hyderabad, Telangana · Local number', tags:['VOICE']},
+    {c:'in', num:'+91 44-4012-5500', loc:'Chennai, Tamil Nadu · Local number', tags:['VOICE','SMS']},
+    {c:'in', num:'+91 20-6720-4400', loc:'Pune, Maharashtra · Local number', tags:['VOICE']},
+    {c:'in', num:'+91 33-4602-7700', loc:'Kolkata, West Bengal · Local number', tags:['VOICE']},
+    {c:'us', num:'+1 (415) 555-0142', loc:'San Francisco, CA · Local number', tags:['VOICE','SMS']},
+    {c:'us', num:'+1 (212) 555-0178', loc:'New York, NY · Local number', tags:['VOICE','SMS']},
+    {c:'us', num:'+1 (800) 555-0199', loc:'United States · Toll-free number', tags:['TOLL-FREE','VOICE']},
+    {c:'us', num:'+1 (312) 555-0134', loc:'Chicago, IL · Local number', tags:['VOICE']},
+    {c:'uk', num:'+44 20 7946 0018', loc:'London · Local number', tags:['VOICE','SMS']},
+    {c:'uk', num:'+44 161 496 0122', loc:'Manchester · Local number', tags:['VOICE']},
+    {c:'uk', num:'+44 800 046 0100', loc:'United Kingdom · Toll-free number', tags:['TOLL-FREE','VOICE']},
+    {c:'ae', num:'+971 4 231 0055', loc:'Dubai · Local number', tags:['VOICE']},
+    {c:'ae', num:'+971 2 610 0088', loc:'Abu Dhabi · Local number', tags:['VOICE']},
+    {c:'au', num:'+61 2 8015 0033', loc:'Sydney, NSW · Local number', tags:['VOICE','SMS']},
+    {c:'au', num:'+61 3 9015 0077', loc:'Melbourne, VIC · Local number', tags:['VOICE']}
+  ];
+  var PHONE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5l4-1 2 5-3 2a12 12 0 006 6l2-3 5 2-1 4a2 2 0 01-2 2A16 16 0 013 7a2 2 0 011-2z"/></svg>';
+
+  var cur = 'in';
+  var btn = document.getElementById('countryBtn');
+  var menu = document.getElementById('countryMenu');
+  var curFlag = document.getElementById('curFlag');
+  var curLabel = document.getElementById('curLabel');
+  var search = document.getElementById('numSearch');
+  var list = document.getElementById('numList');
+  var empty = document.getElementById('numEmpty');
+
+  function tagHtml(t){ return t === 'TOLL-FREE' ? '<span class="num-tag tollfree">TOLL-FREE</span>' : '<span class="num-tag">' + t + '</span>'; }
+
+  function render(){
+    var q = search.value.trim().toLowerCase();
+    var qd = q.replace(/[^0-9]/g, '');
+    var rows = NUMBERS.filter(function(n){ return n.c === cur; });
+    if (q){
+      rows = rows.filter(function(n){
+        var hay = (n.num + ' ' + n.loc).toLowerCase();
+        var digits = n.num.replace(/[^0-9]/g, '');
+        return hay.indexOf(q) > -1 || (qd && digits.indexOf(qd) > -1);
+      });
+    }
+    if (!rows.length){ list.innerHTML = ''; empty.hidden = false; return; }
+    empty.hidden = true;
+    list.innerHTML = rows.map(function(n, i){
+      return '<div class="num-item' + (i === 0 ? ' sel' : '') + '">' +
+        '<span class="num-radio"></span>' +
+        '<span class="num-ic">' + PHONE + '</span>' +
+        '<div class="num-info"><div class="n">' + n.num + '</div><div class="m">' + n.loc + '</div></div>' +
+        '<div class="num-tags">' + n.tags.map(tagHtml).join('') + '</div>' +
+      '</div>';
+    }).join('');
+    Array.prototype.forEach.call(list.querySelectorAll('.num-item'), function(it){
+      it.addEventListener('click', function(){
+        Array.prototype.forEach.call(list.querySelectorAll('.num-item'), function(x){ x.classList.remove('sel'); });
+        it.classList.add('sel');
+      });
     });
+  }
+
+  // build country menu
+  menu.innerHTML = COUNTRIES.map(function(c){
+    return '<div class="country-opt' + (c.key === cur ? ' sel' : '') + '" data-key="' + c.key + '">' +
+      '<span class="flag">' + c.flag + '</span>' + c.name + '<span class="code">' + c.code + '</span></div>';
+  }).join('');
+
+  btn.addEventListener('click', function(e){ e.stopPropagation(); menu.hidden = !menu.hidden; });
+  document.addEventListener('click', function(){ menu.hidden = true; });
+  menu.addEventListener('click', function(e){
+    var opt = e.target.closest('.country-opt'); if (!opt) return;
+    e.stopPropagation();
+    cur = opt.getAttribute('data-key');
+    var c = COUNTRIES.filter(function(x){ return x.key === cur; })[0];
+    curFlag.textContent = c.flag;
+    curLabel.textContent = c.name + ' (' + c.code + ')';
+    Array.prototype.forEach.call(menu.querySelectorAll('.country-opt'), function(o){ o.classList.toggle('sel', o.getAttribute('data-key') === cur); });
+    menu.hidden = true;
+    search.value = '';
+    render();
   });
+
+  search.addEventListener('input', render);
+  render();
 })();
 </script>
 </body>
