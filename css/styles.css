@@ -448,6 +448,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);transition:.15s}
 .mt-close:hover{background:rgba(255,255,255,.14);transform:rotate(90deg)}
 .mt-close svg{width:22px;height:22px}
+/* header title + note split 50 / 50 across the modal width */
+.setup-modal .onb-head{gap:40px}
+.setup-modal .onb-head h1{flex:1;width:auto}
+.setup-modal .onb-head .note{flex:1;width:auto}
 /* step chips stretch to fill the modal width */
 .setup-modal .dash-tabs{width:1360px}
 .setup-modal .steps{width:100%}
