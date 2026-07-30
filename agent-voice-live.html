@@ -4,31 +4,48 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1440">
 <title>AI VARTA — Go Live (Voice Agent)</title>
-<link rel="stylesheet" href="css/styles.css?v=8">
+<link rel="stylesheet" href="css/styles.css?v=9">
 <style>
-  .onb{height:940px}
-  .onb .dhero{height:940px}
+  .onb{height:960px}
+  .onb .dhero{height:960px}
   .dash-tabs{position:absolute;left:40px;top:112px}
   .onb-head{left:40px;top:196px;width:1360px}
-  .onb-card{left:40px;top:316px;width:1360px}
+  .onb-card{left:40px;top:330px;width:1360px;background:#fff;border-radius:24px;padding:28px 30px;box-shadow:0 20px 60px rgba(0,0,0,.25)}
 
-  .gl-hero{display:flex;align-items:center;gap:22px;background:linear-gradient(120deg,#effdf6,#eef8ff);border:1px solid #d8f0e6;border-radius:18px;padding:24px 26px}
-  .gl-check{width:60px;height:60px;border-radius:50%;background:var(--grad);display:grid;place-items:center;flex:none;box-shadow:0 12px 26px rgba(0,171,255,.35)}
-  .gl-check svg{width:30px;height:30px;color:#fff}
-  .gl-info{flex:1;min-width:0}
-  .gl-info h3{font-size:20px;font-weight:700}
-  .gl-info .sub{font-size:14px;color:#5b6472;margin-top:4px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-  .gl-numchip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #e2e8f0;border-radius:80px;padding:6px 14px;font-weight:600;color:#0f172a;font-size:14px}
+  /* ready banner */
+  .gl-hero{position:relative;display:flex;align-items:center;gap:24px;
+    background:linear-gradient(120deg,#eafff5 0%,#e9f6ff 100%);border:1px solid #d6f0e6;
+    border-radius:20px;padding:26px 28px;overflow:hidden}
+  .gl-hero::after{content:"";position:absolute;right:-40px;top:-60px;width:260px;height:200px;
+    background:radial-gradient(closest-side,rgba(0,171,255,.16),transparent 70%);pointer-events:none}
+  .gl-check{position:relative;width:64px;height:64px;border-radius:50%;background:var(--grad);
+    display:grid;place-items:center;flex:none;box-shadow:0 14px 30px rgba(0,171,255,.4)}
+  .gl-check::before{content:"";position:absolute;inset:-9px;border-radius:50%;border:2px solid rgba(0,200,120,.4);animation:glpulse 2.2s ease-out infinite}
+  @keyframes glpulse{0%{transform:scale(.82);opacity:.85}70%{opacity:0}100%{transform:scale(1.32);opacity:0}}
+  .gl-check svg{width:32px;height:32px;color:#fff}
+  .gl-info{flex:1;min-width:0;position:relative}
+  .gl-info h3{font-size:22px;font-weight:700;display:flex;align-items:center;gap:10px}
+  .gl-live-pill{font-size:11px;font-weight:800;letter-spacing:.6px;color:#0a9d52;background:#d9fbe9;border-radius:80px;padding:4px 11px;display:inline-flex;align-items:center;gap:6px}
+  .gl-live-pill .d{width:7px;height:7px;border-radius:50%;background:#12b76a;animation:glblink 1.4s ease-in-out infinite}
+  @keyframes glblink{0%,100%{opacity:1}50%{opacity:.3}}
+  .gl-info .sub{font-size:14px;color:#4b5563;margin-top:8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .gl-numchip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #dbe3ec;border-radius:80px;padding:7px 15px;font-weight:700;color:#0f172a;font-size:14px}
   .gl-numchip .dot{width:8px;height:8px;border-radius:50%;background:#12b76a}
-  .gl-golive{background:var(--grad);color:#fff;border-radius:80px;padding:15px 30px;font-weight:600;font-size:16px;white-space:nowrap;box-shadow:0 12px 28px rgba(0,171,255,.3)}
-  .gl-golive:hover{filter:brightness(1.05)}
+  .gl-golive{background:var(--grad);color:#fff;border-radius:80px;padding:16px 34px;font-weight:600;font-size:16px;white-space:nowrap;box-shadow:0 14px 30px rgba(0,171,255,.32);transition:transform .16s, filter .16s;display:inline-flex;align-items:center;gap:10px}
+  .gl-golive:hover{filter:brightness(1.05);transform:translateY(-2px)}
+  .gl-golive svg{width:18px;height:18px}
 
-  .gl-guide-h{font-size:18px;font-weight:600;margin:30px 0 16px}
-  .gl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  .gl-card{display:flex;gap:16px;border:1px solid #eceef2;border-radius:14px;padding:20px 22px;transition:.15s}
-  .gl-card:hover{border-color:#cfe9fb;box-shadow:0 8px 24px rgba(16,24,40,.06)}
-  .gl-ic{width:46px;height:46px;border-radius:12px;background:#eef8ff;color:#00abff;display:grid;place-items:center;flex:none}
+  .gl-guide-h{font-size:18px;font-weight:700;margin:30px 0 16px}
+  .gl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .gl-card{position:relative;display:flex;gap:18px;border:1px solid #eef1f4;border-radius:16px;padding:22px 24px;background:#fff;transition:transform .18s, box-shadow .18s, border-color .18s}
+  .gl-card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(16,24,40,.09);border-color:#dcecfa}
+  .gl-num{position:absolute;top:16px;right:20px;font-size:22px;font-weight:800;color:#eef1f5;letter-spacing:-1px}
+  .gl-ic{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;color:#fff;flex:none;box-shadow:0 10px 20px -8px rgba(0,0,0,.35)}
   .gl-ic svg{width:24px;height:24px}
+  .gl-ic.c1{background:linear-gradient(135deg,#4fd0ff,#009ff5)}
+  .gl-ic.c2{background:linear-gradient(135deg,#22e58f,#00c39c)}
+  .gl-ic.c3{background:linear-gradient(135deg,#9b8bff,#5b6bff)}
+  .gl-ic.c4{background:linear-gradient(135deg,#ffb459,#ff7a45)}
   .gl-card h4{font-size:16px;font-weight:600;margin-bottom:6px}
   .gl-card p{font-size:14px;color:#667085;line-height:1.55}
   .gl-card p b{color:#0f172a;font-weight:600}
@@ -54,36 +71,42 @@
     <div class="gl-hero">
       <span class="gl-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
       <div class="gl-info">
-        <h3>Reception Voice Bot is ready</h3>
+        <h3>Reception Voice Bot is ready <span class="gl-live-pill"><span class="d"></span>READY</span></h3>
         <div class="sub">
           <span class="gl-numchip"><span class="dot"></span>+91 80-4718-2200</span>
           <span>Audio Call plan · English (India) · Aria (Warm)</span>
         </div>
       </div>
-      <a class="gl-golive" href="agents.html">Take it Live</a>
+      <a class="gl-golive" href="agents.html">Take it Live
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
     </div>
 
     <div class="gl-guide-h">How to use your Voice AI Agent</div>
     <div class="gl-grid">
       <div class="gl-card">
-        <span class="gl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5l4-1 2 5-3 2a12 12 0 006 6l2-3 5 2-1 4a2 2 0 01-2 2A16 16 0 013 7a2 2 0 011-2z"/></svg></span>
-        <div><h4>1. Test your agent</h4><p>Call <b>+91 80-4718-2200</b> from any phone to hear your voice agent answer live and try a real conversation.</p></div>
+        <span class="gl-num">01</span>
+        <span class="gl-ic c1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5l4-1 2 5-3 2a12 12 0 006 6l2-3 5 2-1 4a2 2 0 01-2 2A16 16 0 013 7a2 2 0 011-2z"/></svg></span>
+        <div><h4>Test your agent</h4><p>Call <b>+91 80-4718-2200</b> from any phone to hear your voice agent answer live and try a real conversation.</p></div>
       </div>
       <div class="gl-card">
-        <span class="gl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg></span>
-        <div><h4>2. Share your number</h4><p>Add it to your <b>website, Google Business Profile and ads</b> so customers can reach your agent 24/7.</p></div>
+        <span class="gl-num">02</span>
+        <span class="gl-ic c2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg></span>
+        <div><h4>Share your number</h4><p>Add it to your <b>website, Google Business Profile and ads</b> so customers can reach your agent 24/7.</p></div>
       </div>
       <div class="gl-card">
-        <span class="gl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6-6-6M12 17l6-6-6-6"/></svg></span>
-        <div><h4>3. Forward your existing line</h4><p>Point your current business number to this line so every missed call is answered automatically.</p></div>
+        <span class="gl-num">03</span>
+        <span class="gl-ic c3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6-6-6M12 17l6-6-6-6"/></svg></span>
+        <div><h4>Forward your existing line</h4><p>Point your current business number to this line so every missed call is answered automatically.</p></div>
       </div>
       <div class="gl-card">
-        <span class="gl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></span>
-        <div><h4>4. Monitor &amp; improve</h4><p>Review <b>call logs, transcripts and analytics</b> anytime from My Agents, and update knowledge to make it smarter.</p></div>
+        <span class="gl-num">04</span>
+        <span class="gl-ic c4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></span>
+        <div><h4>Monitor &amp; improve</h4><p>Review <b>call logs, transcripts and analytics</b> anytime from My Agents, and update knowledge to make it smarter.</p></div>
       </div>
     </div>
   </div>
 </div>
-<script src="js/partials.js?v=8"></script>
+<script src="js/partials.js?v=9"></script>
 </body>
 </html>
