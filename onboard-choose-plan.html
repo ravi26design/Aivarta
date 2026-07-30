@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>AI VARTA — Choose Plan & Pay</title>
+<link rel="stylesheet" href="css/styles.css?v=4">
+<style>
+  .onb{height:1472px}
+  .onb .dhero{height:810px}
+  .onb .blk{position:absolute;top:733px;left:0;width:1440px;height:253px;background:#010101}
+  .welcome{position:absolute;left:96px;top:112px;width:1248px}
+  .steps{position:absolute;left:96px;top:302px}
+  .onb-head{position:absolute;left:96px;top:373px;width:1248px;display:flex;gap:32px;align-items:flex-start;color:#fff}
+  .onb-head h1{font-size:48px;font-weight:500;line-height:1.2;width:821px}
+  .onb-head .note{font-size:18px;font-weight:300;width:395px;line-height:1.4}
+  .plans{position:absolute;left:96px;top:537px;display:flex;gap:32px}
+  .site-footer{position:absolute;top:986px;left:0}
+</style>
+</head>
+<body>
+<div class="canvas onb">
+  <section class="dhero"><div class="glow-a"></div><div class="glow-b"></div><div class="grid"></div><div class="veil"></div></section>
+  <div class="blk"></div>
+  <div data-appheader="home"></div>
+
+  <div class="welcome">
+    <span class="wav"><img src="assets/user.png" alt=""></span>
+    <div class="wbody">
+      <div>
+        <h4>Hi! John</h4>
+        <p class="wtxt">A few steps are still pending on your side. Please complete them to start enjoying the full benefits of our smart AI Assistant chatbot.</p>
+      </div>
+      <div class="progress"><i style="width:260px"></i></div>
+    </div>
+    <a class="btn-grad wcta" href="onboard-upload.html">Let’s Finish Your Setup</a>
+  </div>
+
+  <div data-steps data-green="1" data-current="0"></div>
+
+  <div class="onb-head">
+    <h1>Choose the Best Plan and <span class="grad-text">Sets for your business</span></h1>
+    <div class="note">Active subscription required to customize chatbot</div>
+  </div>
+
+  <div class="plans">
+    <div class="plan white">
+      <div class="top">
+        <div><h3>Starter Plan</h3><div class="price">Free<small>/For on week</small></div></div>
+        <div class="divide"></div>
+        <div class="feats">
+          <div class="feat"><span class="plan-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>300 Messages</div>
+          <div class="feat"><span class="plan-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>1 AI Chatbot</div>
+          <div class="feat"><span class="plan-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>3 Files or Links of Data Ingestion</div>
+        </div>
+      </div>
+      <a class="cta grad" href="payment.html">Select Plan</a>
+    </div>
+    <div class="plan blue">
+      <div class="top">
+        <div><h3>Basic Plan</h3><div class="price">₹2500<small>/Month</small></div></div>
+        <div class="divide"></div>
+        <div class="feats">
+          <div class="feat"><span class="plan-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>3000 Messages</div>
+          <div class="feat"><span class="plan-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>1 AI Chatbot</div>
+          <div class="feat"><span class="plan-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>3 Files or Links of Data Ingestion</div>
+        </div>
+      </div>
+      <a class="cta white" href="payment.html">Select Plan</a>
+    </div>
+    <div class="plan green">
+      <div class="top">
+        <div><h3>Pro Plan</h3><div class="price">₹4000<small>/Month</small></div></div>
+        <div class="divide"></div>
+        <div class="feats">
+          <div class="feat"><span class="plan-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>8000 Messages</div>
+          <div class="feat"><span class="plan-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>1 AI Chatbots</div>
+          <div class="feat"><span class="plan-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>5 Files or Links of Data Ingestion</div>
+        </div>
+      </div>
+      <a class="cta white" href="payment.html">Select Plan</a>
+    </div>
+  </div>
+
+  <div data-footer></div>
+</div>
+<script src="js/partials.js?v=4"></script>
+</body>
+</html>

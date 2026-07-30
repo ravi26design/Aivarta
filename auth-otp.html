@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>AI VARTA — OTP Verification</title>
+<link rel="stylesheet" href="css/styles.css?v=4">
+<style>
+  .otp-meta{text-align:center;margin:18px 0 22px}
+  .otp-valid{font-size:13px;color:var(--ink-50);margin-bottom:10px}
+  .otp-valid b{color:#111;font-weight:600}
+  .otp-valid.expired{color:#e53935}
+  .otp-valid.expired b{color:#e53935}
+  .otp-resend{font-size:14px;color:var(--ink-50);margin:0}
+  #resendLink{color:var(--blue);text-decoration:underline;font-weight:500}
+  #resendTimer b{color:#111;font-weight:600}
+</style>
+</head>
+<body>
+<div class="overlay">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="left">
+        <a class="back" href="auth-login.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></a>
+        <h2>OTP Verification</h2>
+      </div>
+      <a class="x" href="home.html" onclick="return aivartaCancelAuth()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+    </div>
+    <div class="modal-lead">
+      <h3>Verify you email</h3>
+      <p>A verification code (OTP) has been sent to your email <b>example@gmail.com</b>. Please enter the code to verify and continue.</p>
+    </div>
+    <div class="otp" id="otp" style="margin-top:20px">
+      <input maxlength="1" inputmode="numeric" autocomplete="one-time-code" aria-label="OTP digit 1">
+      <input maxlength="1" inputmode="numeric" aria-label="OTP digit 2">
+      <input maxlength="1" inputmode="numeric" aria-label="OTP digit 3">
+      <input maxlength="1" inputmode="numeric" aria-label="OTP digit 4">
+    </div>
+    <div class="otp-meta">
+      <div class="otp-valid" id="otpValidLine">This OTP is valid for <b id="otpValid">05:00</b></div>
+      <div class="otp-resend">
+        <span id="resendTimer">Resend code in <b>00:30</b></span>
+        <a href="#" id="resendLink" onclick="return otpResend()" hidden>Resend code</a>
+      </div>
+    </div>
+    <a class="btn-full" href="auth-company.html" onclick="return aivartaVerify()">Verify Code</a>
+  </div>
+</div>
+<script>
+  // OTP boxes: numeric only, auto-advance, backspace to previous, paste support
+  (function(){
+    var boxes = Array.prototype.slice.call(document.querySelectorAll('#otp input'));
+    boxes.forEach(function(b, i){
+      b.addEventListener('input', function(){
+        b.value = b.value.replace(/[^0-9]/g, '').slice(0, 1);
+        if (b.value && boxes[i + 1]) boxes[i + 1].focus();
+      });
+      b.addEventListener('keydown', function(e){
+        if (e.key === 'Backspace' && !b.value && boxes[i - 1]) boxes[i - 1].focus();
+      });
+      b.addEventListener('paste', function(e){
+        e.preventDefault();
+        var digits = (e.clipboardData.getData('text') || '').replace(/[^0-9]/g, '').split('');
+        boxes.forEach(function(box, k){ box.value = digits[k] || ''; });
+        (boxes[Math.min(digits.length, boxes.length - 1)] || b).focus();
+      });
+    });
+    if (boxes[0]) boxes[0].focus();
+  })();
+
+  // Resend timer (30s) + OTP validity countdown (5 min)
+  (function(){
+    var RESEND = 30, VALID = 300;
+    var elTimer = document.getElementById('resendTimer');
+    var elLink = document.getElementById('resendLink');
+    var elValid = document.getElementById('otpValid');
+    var elValidLine = document.getElementById('otpValidLine');
+    var rc, vc, ri, vi;
+    function fmt(s){ var m = Math.floor(s/60), ss = s%60; return (m<10?'0':'')+m+':'+(ss<10?'0':'')+ss; }
+    function startResend(){
+      rc = RESEND; clearInterval(ri);
+      elLink.hidden = true; elTimer.style.display = '';
+      elTimer.innerHTML = 'Resend code in <b>'+fmt(rc)+'</b>';
+      ri = setInterval(function(){
+        rc--;
+        if (rc <= 0){ clearInterval(ri); elTimer.style.display = 'none'; elLink.hidden = false; }
+        else elTimer.innerHTML = 'Resend code in <b>'+fmt(rc)+'</b>';
+      }, 1000);
+    }
+    function startValid(){
+      vc = VALID; clearInterval(vi);
+      elValidLine.classList.remove('expired');
+      elValidLine.innerHTML = 'This OTP is valid for <b id="otpValid">'+fmt(vc)+'</b>';
+      vi = setInterval(function(){
+        vc--;
+        var v = document.getElementById('otpValid');
+        if (vc <= 0){
+          clearInterval(vi);
+          elValidLine.classList.add('expired');
+          elValidLine.innerHTML = 'OTP expired. Please resend the code.';
+        } else if (v){ v.textContent = fmt(vc); }
+      }, 1000);
+    }
+    window.otpResend = function(){ startResend(); startValid(); return false; };
+    startResend(); startValid();
+  })();
+
+  function aivartaVerify(){
+    // Entering the OTP logs the user in, then returns them to the same page they came from,
+    // which now renders in its logged-in ("after login") state.
+    try{
+      localStorage.setItem('aivarta_loggedin','1');
+      var next = localStorage.getItem('aivarta_next');
+      localStorage.removeItem('aivarta_next');
+      location.href = next || 'home.html';
+    }catch(e){ location.href = 'home.html'; }
+    return false;
+  }
+  function aivartaCancelAuth(){
+    try{
+      var next = localStorage.getItem('aivarta_next');
+      if(next){ localStorage.removeItem('aivarta_next'); location.href = next; return false; }
+    }catch(e){}
+    return true; // default: home
+  }
+</script>
+</body>
+</html>

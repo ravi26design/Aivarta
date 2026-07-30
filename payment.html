@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>AI VARTA — Payment</title>
+<link rel="stylesheet" href="css/styles.css?v=4">
+<style>
+  .pay{width:400px;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.4);font-family:'Inter',sans-serif}
+  .pay .ph{background:#2aa3ee;color:#fff;display:flex;align-items:center;gap:12px;padding:16px}
+  .pay .ph .logo{width:40px;height:40px;border-radius:8px;background:#fff;display:grid;place-items:center;color:#2aa3ee;font-weight:800;font-size:13px}
+  .pay .ph .t{font-weight:700;font-size:18px;flex:1}
+  .pay .ph .ic{opacity:.9;cursor:pointer}
+  .pay .pb{padding:20px}
+  .pay h3{font-size:16px;font-weight:700;margin:6px 0 12px}
+  .qr-box{border:1px solid #e4e4e4;border-radius:10px;padding:16px;display:flex;gap:16px;align-items:center}
+  .qr-wrap{position:relative;width:150px;height:150px;flex:none}
+  .qr{width:150px;height:150px}
+  .qr-frame{position:absolute;inset:-4px;border-radius:6px;background:
+     linear-gradient(#2aa3ee,#2aa3ee) left top/22px 3px no-repeat,
+     linear-gradient(#2aa3ee,#2aa3ee) left top/3px 22px no-repeat,
+     linear-gradient(#2aa3ee,#2aa3ee) right top/22px 3px no-repeat,
+     linear-gradient(#2aa3ee,#2aa3ee) right top/3px 22px no-repeat,
+     linear-gradient(#2aa3ee,#2aa3ee) left bottom/22px 3px no-repeat,
+     linear-gradient(#2aa3ee,#2aa3ee) left bottom/3px 22px no-repeat,
+     linear-gradient(#2aa3ee,#2aa3ee) right bottom/22px 3px no-repeat,
+     linear-gradient(#2aa3ee,#2aa3ee) right bottom/3px 22px no-repeat;
+     pointer-events:none}
+  .show-qr{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#2aa3ee;color:#fff;border-radius:80px;padding:8px 18px;font-size:14px;font-weight:600}
+  .qr-side{font-size:14px;color:#333;line-height:1.4}
+  .upi-icons{display:flex;gap:8px;margin-top:10px}
+  .upi-icons span{width:22px;height:22px;border-radius:50%;background:#eee;display:inline-block}
+  .plist{margin-top:20px}
+  .plist .lbl{font-size:16px;font-weight:700;margin-bottom:10px}
+  .prow{display:flex;align-items:center;gap:14px;border:1px solid #e4e4e4;padding:14px 16px}
+  .prow:first-of-type{border-radius:10px 10px 0 0}
+  .prow:last-of-type{border-radius:0 0 10px 10px;border-top:none}
+  .prow .pi{width:26px;height:26px;color:#2aa3ee;flex:none}
+  .prow .pt{flex:1}
+  .prow .pt b{font-weight:600;font-size:15px}
+  .prow .pt small{display:block;color:#666;font-size:12px}
+  .pay .pf{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;box-shadow:0 -4px 16px rgba(0,0,0,.06)}
+  .pay .pf .amt{font-size:22px;font-weight:700}
+  .pay .pf .amt small{font-size:14px;color:#888;font-weight:400}
+  .pay .pf .paybtn{background:var(--grad);color:#000;border-radius:80px;padding:14px 34px;font-weight:600;font-size:16px}
+</style>
+</head>
+<body>
+<div class="overlay">
+  <div class="pay">
+    <div class="ph">
+      <span class="logo">SkyAI</span>
+      <span class="t">SKYAI technologies</span>
+      <a class="ic" href="onboard-choose-plan.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+    </div>
+    <div class="pb">
+      <h3>Pay With UPI QR</h3>
+      <div class="qr-box">
+        <div class="qr-wrap">
+          <canvas class="qr" id="qr" width="150" height="150"></canvas>
+          <div class="qr-frame"></div>
+          <div class="show-qr">Show QR</div>
+        </div>
+        <div class="qr-side">Scan the QR using any UPI app on your phone.
+          <div class="upi-icons"><span style="background:#5f259f"></span><span style="background:#00baf2"></span><span style="background:#000"></span><span style="background:#e23744"></span></div>
+        </div>
+      </div>
+      <div class="plist">
+        <div class="lbl">UPI And Cards</div>
+        <div class="prow">
+          <span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l8 6-8 6M12 6l8 6-8 6"/></svg></span>
+          <div class="pt"><b>UPI / QR</b></div>
+          <span style="color:#999">···</span>
+        </div>
+        <div class="prow">
+          <span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg></span>
+          <div class="pt"><b>Card</b><small>MasterCard, Visa, and RuPay credit cards</small></div>
+        </div>
+      </div>
+    </div>
+    <div class="pf">
+      <div class="amt">₹2500<small>/Month</small></div>
+      <a class="paybtn" href="payment-confirm.html">Pay Now</a>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var c=document.getElementById('qr'),x=c.getContext('2d'),N=25,s=150/N,seed=12345;
+  function rnd(){seed=(seed*1103515245+12345)&0x7fffffff;return seed/0x7fffffff;}
+  x.fillStyle='#fff';x.fillRect(0,0,150,150);
+  x.fillStyle='#000';
+  for(var i=0;i<N;i++)for(var j=0;j<N;j++){if(rnd()>0.5)x.fillRect(i*s,j*s,s,s);}
+  function finder(px,py){x.fillStyle='#fff';x.fillRect(px,py,7*s,7*s);x.fillStyle='#000';x.fillRect(px,py,7*s,s);x.fillRect(px,py+6*s,7*s,s);x.fillRect(px,py,s,7*s);x.fillRect(px+6*s,py,s,7*s);x.fillRect(px+2*s,py+2*s,3*s,3*s);}
+  finder(0,0);finder((N-7)*s,0);finder(0,(N-7)*s);
+})();
+</script>
+</body>
+</html>

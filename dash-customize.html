@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>AI VARTA — Customize Chatbot</title>
+<link rel="stylesheet" href="css/styles.css?v=4">
+<style>
+  .onb{height:2168px}
+  .onb .dhero{height:1682px}
+  .dash-tabs{top:88px}
+  .onb-head{top:170px}
+  .cust-cards{position:absolute;left:96px;top:300px;width:1248px;display:flex;gap:32px;align-items:flex-start}
+  .cust-card{flex:1;background:#fff;border-radius:24px;padding:28px 32px;box-shadow:0 10px 40px rgba(0,0,0,.18)}
+  .cust-card h2{font-size:22px;font-weight:600;margin-bottom:12px}
+  .cust-card .divide{height:1px;background:var(--ink-12);margin-bottom:22px}
+  .color-row{display:flex;gap:20px}
+  .color-input{display:flex;align-items:center;justify-content:space-between;border:1px solid #e2e4e8;border-radius:12px;height:56px;padding:0 8px 0 16px;font-size:16px}
+  .color-input .sw{width:40px;height:40px;border-radius:8px;border:1px solid #e2e4e8}
+  .avatars{display:flex;gap:14px;align-items:center}
+  .avatars .a{width:48px;height:48px;border-radius:50%;overflow:hidden;border:2px solid transparent}
+  .avatars .a.sel{border-color:var(--blue)}
+  .avatars .a img{width:100%;height:100%;object-fit:cover}
+  .avatars .up{width:48px;height:48px;border-radius:50%;border:2px dashed var(--blue);display:grid;place-items:center;color:var(--blue)}
+  .selectbox{position:relative}
+  .selectbox svg{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;pointer-events:none}
+  .chk{display:flex;align-items:center;gap:8px;font-size:14px;color:#555;margin:16px 0 20px}
+  .pv{border:1px solid #ececec;border-radius:16px;overflow:hidden;height:560px;display:flex;flex-direction:column;background:#fff}
+  .pv .bar{background:var(--blue);display:flex;align-items:center;gap:10px;padding:12px 16px;color:#fff}
+  .pv .bar img{width:34px;height:34px;border-radius:50%}
+  .pv .bar .nm{font-weight:600;font-size:15px}.pv .bar .rl{font-size:11px;opacity:.9}
+  .pv .body{flex:1;padding:16px;display:flex;flex-direction:column;gap:14px;background:#fafafa}
+  .pv .bot{align-self:flex-start;background:#eee;border-radius:12px;padding:10px 14px;font-size:13px;max-width:70%}
+  .pv .usr{align-self:flex-end;background:var(--blue);color:#fff;border-radius:12px;padding:10px 14px;font-size:13px;max-width:75%}
+  .pv .typing{align-self:flex-start;background:#eee;border-radius:12px;padding:10px 14px;font-size:13px;color:#666}
+  .pv .foot{padding:12px;display:flex;gap:10px;align-items:center;border-top:1px solid #eee}
+  .pv .foot .inp{flex:1;border:1px solid #e2e4e8;border-radius:80px;padding:12px 18px;color:#9aa0a8;font-size:14px}
+  .pv .foot .send{width:44px;height:44px;border-radius:50%;background:var(--blue);display:grid;place-items:center;color:#fff;flex:none}
+  .pv .foot .send svg{width:20px;height:20px}
+  .site-footer{position:absolute;top:1682px;left:0}
+</style>
+</head>
+<body>
+<div class="canvas onb">
+  <section class="dhero"><div class="glow-a"></div><div class="glow-b"></div><div class="grid"></div><div class="veil"></div></section>
+  <div data-appheader="home"></div>
+  <div class="dash-tabs"><div data-dsteps data-current="3"></div></div>
+
+  <div class="onb-head">
+    <h1>Chatbot Customization <span class="grad-text">Aligned with Your Brand</span></h1>
+    <div class="note">Easily customize your chatbot’s look and feel to align with your brand guidelines for a seamless experience.</div>
+  </div>
+
+  <div class="cust-cards">
+    <div class="cust-card">
+      <h2>Chatbot Customization</h2>
+      <div class="divide"></div>
+      <div class="f"><label>Chatbot Name<span class="req">*</span></label><input value="Smart Chat Assistant"></div>
+      <div class="f"><label>Chatbot Role<span class="req">*</span></label><input value="Guide User about organization"></div>
+      <div class="f"><label>Company Details<span class="req">*</span></label>
+        <textarea style="min-height:150px">SkyAI is a technology solution provider it's area of expertise include Artificial intelligence, Computer vision, Machine Learning, IOT solutions, Customized softwares and Enterprise SaaS products. With broad portfolio of business and technology solutions SkyAI helps clients improve their business performance. Our products and services help our clients solve their problems, meet their goals, keep their competitive edge, keep pace with the speed of business. Our objective is to work along with you and help you achieve your business goals.</textarea>
+      </div>
+      <div class="f"><label>Welcome Message<span class="req">*</span></label><input value="How can I help you today?"></div>
+      <div class="f"><label>Message Input Placeholder<span class="req">*</span></label><input value="Ask What’s on Your Mind."></div>
+      <div class="color-row">
+        <div class="f" style="flex:1"><label>Choose Primary Color<span class="req">*</span></label><div class="color-input"><span>#00ABFF</span><span class="sw" style="background:#00ABFF"></span></div></div>
+        <div class="f" style="flex:1"><label>Secondary Color<span class="req">*</span></label><div class="color-input"><span>#FFFFFF</span><span class="sw" style="background:#FFFFFF"></span></div></div>
+      </div>
+      <div class="f"><label>Select or Upload Avatar</label>
+        <div class="avatars">
+          <span class="a sel"><img src="assets/user.png"></span><span class="a"><img src="assets/user.png"></span><span class="a"><img src="assets/user.png"></span><span class="a"><img src="assets/user.png"></span>
+          <span class="up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span>
+        </div>
+      </div>
+      <div class="f"><label>Select Model<span class="req">*</span></label>
+        <div class="selectbox"><select><option>Open AI</option><option>Claude</option><option>Gemini</option></select><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <label class="chk"><input type="checkbox"> Prompt user for his identity before chat</label>
+      <a class="btn-full" href="dash-widget.html">Update Configuration</a>
+    </div>
+
+    <div class="cust-card">
+      <h2>Preview and Test Your Chatbot Here</h2>
+      <div class="divide"></div>
+      <div class="pv">
+        <div class="bar"><img src="assets/chatbot_avatar.png" alt=""><div><div class="nm">Smart Chat Assistant</div><div class="rl">Guide User about organization</div></div></div>
+        <div class="body">
+          <div class="bot">How can I help you today?</div>
+          <div class="usr">I want to buy a product of axis but your website is not ecommerce so where can I buy your products</div>
+          <div class="typing">Typing...</div>
+        </div>
+        <div class="foot"><div class="inp">Ask What’s on Your Mind.</div><div class="send"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div data-footer></div>
+</div>
+<script src="js/partials.js?v=4"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Choose File</title>
+<link rel="stylesheet" href="css/styles.css?v=4">
+<style>
+  .fp{width:718px;height:453px;background:#f3f3f4;border-radius:12px;overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.4);display:flex;flex-direction:column;font-size:13px}
+  .fp .tb{height:44px;background:#e9e9ea;display:flex;align-items:center;gap:8px;padding:0 14px;border-bottom:1px solid #d8d8d8}
+  .fp .dots{display:flex;gap:8px}
+  .fp .dots i{width:12px;height:12px;border-radius:50%}
+  .fp .dots .r{background:#ff5f57}.fp .dots .y{background:#febc2e}.fp .dots .g{background:#28c840}
+  .fp .tb .ttl{flex:1;text-align:center;font-weight:600;color:#333}
+  .fp .body{flex:1;display:flex}
+  .fp .side{width:190px;background:#ececee;border-right:1px solid #dcdcdc;padding:12px}
+  .fp .side .grp{color:#8a8a8a;font-size:11px;margin:10px 4px 6px;text-transform:uppercase}
+  .fp .side .it{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;color:#333}
+  .fp .side .it.sel{background:#d6d6d8}
+  .fp .side .it .d{width:14px;height:14px;border-radius:3px;background:#5aa9f8}
+  .fp .main{flex:1;background:#fff;padding:10px;overflow:auto}
+  .fp .frow{display:grid;grid-template-columns:1fr 120px 90px;gap:8px;padding:7px 10px;border-radius:6px;color:#333}
+  .fp .frow.sel{background:#2a7bec;color:#fff}
+  .fp .frow .nm{display:flex;align-items:center;gap:8px}
+  .fp .frow .ic{width:16px;height:16px;border-radius:3px;background:#e23744}
+  .fp .frow .ic.doc{background:#2a7bec}.fp .frow .ic.sheet{background:#28a745}
+  .fp .foot{height:56px;background:#ececee;border-top:1px solid #dcdcdc;display:flex;align-items:center;justify-content:flex-end;gap:12px;padding:0 16px}
+  .fp .foot .btn{border-radius:7px;padding:7px 18px;font-weight:500;font-size:13px}
+  .fp .foot .cancel{background:#fff;border:1px solid #cfcfcf;color:#333}
+  .fp .foot .open{background:#2a7bec;color:#fff}
+</style>
+</head>
+<body>
+<div class="overlay">
+  <div class="fp">
+    <div class="tb"><div class="dots"><i class="r"></i><i class="y"></i><i class="g"></i></div><div class="ttl">Choose a file to upload</div><div style="width:44px"></div></div>
+    <div class="body">
+      <div class="side">
+        <div class="grp">Favourites</div>
+        <div class="it"><span class="d"></span>Recents</div>
+        <div class="it"><span class="d"></span>Desktop</div>
+        <div class="it sel"><span class="d"></span>Documents</div>
+        <div class="it"><span class="d"></span>Downloads</div>
+        <div class="grp">iCloud</div>
+        <div class="it"><span class="d"></span>iCloud Drive</div>
+      </div>
+      <div class="main">
+        <div class="frow sel"><div class="nm"><span class="ic doc"></span>company-profile.pdf</div><div>Today 10:24</div><div>240 KB</div></div>
+        <div class="frow"><div class="nm"><span class="ic sheet"></span>faq-data.xlsx</div><div>Yesterday</div><div>18 KB</div></div>
+        <div class="frow"><div class="nm"><span class="ic doc"></span>services.docx</div><div>12 Jun 2025</div><div>62 KB</div></div>
+        <div class="frow"><div class="nm"><span class="ic"></span>brand-guidelines.pdf</div><div>04 Jun 2025</div><div>1.2 MB</div></div>
+        <div class="frow"><div class="nm"><span class="ic sheet"></span>pricing-list.csv</div><div>28 May 2025</div><div>9 KB</div></div>
+      </div>
+    </div>
+    <div class="foot">
+      <a class="btn cancel" href="onboard-upload.html">Cancel</a>
+      <a class="btn open" href="onboard-upload.html">Open</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>AI VARTA — Create New Agent</title>
+<link rel="stylesheet" href="css/styles.css?v=4">
+<style>
+  .appwrap{background:#05060a}
+  .a-hero{min-height:100vh;padding:150px 96px 60px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center}
+  .a-hero .dhero{height:100%}
+  .back-link{position:absolute;top:110px;left:96px;z-index:3;color:#aab2c0;display:inline-flex;align-items:center;gap:8px;font-size:15px}
+  .back-link:hover{color:#fff}
+  .back-link svg{width:18px;height:18px}
+  a.pick-card{display:block;color:inherit}
+</style>
+</head>
+<body>
+<div class="appwrap">
+  <section class="a-hero">
+    <div class="dhero"><div class="glow-a"></div><div class="glow-b"></div><div class="grid"></div><div class="veil"></div></div>
+    <div data-appheader="agents"></div>
+    <a class="back-link" href="agents.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>Back to My Agents</a>
+
+    <div class="pick">
+      <h1>What would you like to create?</h1>
+      <p class="lead">Add a new agent to your account. Each agent has its own plan, knowledge base and settings.</p>
+
+      <div class="pick-cards">
+        <a class="pick-card" href="onboard-choose-plan.html">
+          <span class="pic chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 01-11.3 7.3L4 20l.7-5.7A8 8 0 1121 12z"/></svg></span>
+          <h3>Chat Agent</h3>
+          <p>An AI chatbot embedded on your website that answers questions, captures leads and supports customers around the clock.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>Embeddable website widget</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>Trained on your docs &amp; links</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>Live chat logs &amp; captured leads</li>
+          </ul>
+          <span class="go">Set up Chat Agent <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+        <a class="pick-card" href="agent-voice.html">
+          <span class="pic voice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5l4-1 2 5-3 2a12 12 0 006 6l2-3 5 2-1 4a2 2 0 01-2 2A16 16 0 013 7a2 2 0 011-2z"/></svg></span>
+          <h3>Voice AI Agent</h3>
+          <p>An AI voice agent that answers phone calls, speaks naturally in multiple languages and handles inbound conversations.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>Dedicated phone number</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>Natural multilingual voice</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>Call recordings &amp; analytics</li>
+          </ul>
+          <span class="go">Set up Voice Agent <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="js/partials.js?v=4"></script>
+</body>
+</html>

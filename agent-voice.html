@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>AI VARTA — Voice AI Agent</title>
+<link rel="stylesheet" href="css/styles.css?v=4">
+<style>
+  .va{height:1180px}
+  .va .dhero{height:1180px}
+  .dash-tabs{position:absolute;left:40px;top:112px}
+  .onb-head{left:40px;top:196px;width:1360px}
+  .va-cards{position:absolute;left:40px;top:326px;width:1360px;display:flex;gap:32px;align-items:flex-start}
+  .va-card{flex:1;background:#fff;border-radius:24px;padding:28px 32px;box-shadow:0 10px 40px rgba(0,0,0,.18)}
+  .va-card h2{font-size:22px;font-weight:600;margin-bottom:12px}
+  .va-card .divide{height:1px;background:var(--ink-12);margin-bottom:22px}
+  .selectbox{position:relative}
+  .selectbox svg{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;pointer-events:none}
+  .phone-field{display:flex;align-items:center;justify-content:space-between;border:1px solid #e2e4e8;border-radius:12px;height:56px;padding:0 12px 0 16px}
+  .phone-field .pn{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:500}
+  .phone-field .pn .dot{width:9px;height:9px;border-radius:50%;background:#0a9d52}
+  .phone-field .chg{font-size:13px;color:var(--blue);font-weight:600;cursor:pointer}
+  .chk{display:flex;align-items:center;gap:8px;font-size:14px;color:#555;margin:16px 0 20px}
+</style>
+</head>
+<body>
+<div class="canvas va setup-modal">
+  <section class="dhero"><div class="glow-a"></div><div class="glow-b"></div><div class="grid"></div><div class="veil"></div></section>
+  <div class="modal-topbar">
+    <div class="mt-brand">AI VARTA <span class="mt-sub">Voice Agent Setup</span></div>
+    <a class="mt-close" href="agents.html" onclick="if(history.length>1){history.back();return false}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+  </div>
+  <div class="dash-tabs"><div data-vsteps data-green="3" data-current="4"></div></div>
+
+  <div class="onb-head">
+    <h1>Configure Your <span class="grad-text">Voice AI Agent</span></h1>
+    <div class="note">Give your voice agent a personality — set its language, voice, greeting and knowledge, then test it live before going live.</div>
+  </div>
+
+  <div class="va-cards">
+    <!-- LEFT: config -->
+    <div class="va-card">
+      <h2>Voice Agent Configuration</h2>
+      <div class="divide"></div>
+      <div class="f"><label>Agent Name<span class="req">*</span></label><input value="Reception Voice Bot"></div>
+      <div class="f"><label>Knowledge / Company Details<span class="req">*</span></label>
+        <textarea style="min-height:120px">AI VARTA is a platform to create AI Chat and Voice agents. We help businesses automate customer support, capture leads and handle inbound calls in multiple Indian languages, 24/7.</textarea>
+      </div>
+      <div class="f-row">
+        <div class="f" style="flex:1"><label>Language<span class="req">*</span></label>
+          <div class="selectbox"><select><option>English (India)</option><option>Hindi</option><option>English (US)</option><option>Marathi</option><option>Tamil</option></select><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="f" style="flex:1"><label>Voice<span class="req">*</span></label>
+          <div class="selectbox"><select><option>Aria — Female (Warm)</option><option>Leo — Male (Deep)</option><option>Maya — Female (Friendly)</option></select><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+      </div>
+      <div class="f"><label>Greeting Message<span class="req">*</span></label><input value="Hello! Thanks for calling AI VARTA. How may I help you today?"></div>
+      <div class="f-row">
+        <div class="f" style="flex:1"><label>Speaking Speed<span class="req">*</span></label>
+          <div class="selectbox"><select><option>Normal</option><option>Slow</option><option>Fast</option></select><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="f" style="flex:1"><label>AI Model<span class="req">*</span></label>
+          <div class="selectbox"><select><option>OpenAI Realtime</option><option>Gemini Live</option></select><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+      </div>
+      <div class="f"><label>Assigned Phone Number</label>
+        <div class="phone-field"><span class="pn"><span class="dot"></span>+91 80-4718-2200</span><span class="chg">Change number</span></div>
+      </div>
+      <label class="chk"><input type="checkbox" checked> Record calls for quality &amp; analytics</label>
+      <a class="btn-full" href="agents.html">Save &amp; Continue</a>
+    </div>
+
+    <!-- RIGHT: live call preview -->
+    <div class="va-card">
+      <h2>Live Call Preview</h2>
+      <div class="divide"></div>
+      <div class="vcall">
+        <div class="vc-top">
+          <div class="vc-av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5l4-1 2 5-3 2a12 12 0 006 6l2-3 5 2-1 4a2 2 0 01-2 2A16 16 0 013 7a2 2 0 011-2z"/></svg></div>
+          <div class="vc-name">Reception Voice Bot</div>
+          <div class="vc-status">● In call · 00:42</div>
+          <div class="wave">
+            <i style="animation-delay:0s"></i><i style="animation-delay:.1s"></i><i style="animation-delay:.2s"></i><i style="animation-delay:.3s"></i>
+            <i style="animation-delay:.15s"></i><i style="animation-delay:.25s"></i><i style="animation-delay:.05s"></i><i style="animation-delay:.35s"></i>
+            <i style="animation-delay:.2s"></i><i style="animation-delay:.1s"></i><i style="animation-delay:.3s"></i><i style="animation-delay:0s"></i>
+            <i style="animation-delay:.25s"></i><i style="animation-delay:.15s"></i><i style="animation-delay:.35s"></i><i style="animation-delay:.05s"></i>
+          </div>
+        </div>
+        <div class="vc-body">
+          <div class="vline bot">Hello! Thanks for calling AI VARTA. How may I help you today?</div>
+          <div class="vline usr">Hi, I’d like to know about your pricing plans.</div>
+          <div class="vline bot">Of course! We offer Starter, Basic, Pro and Audio Call plans. Are you looking for a chat agent or a voice agent?</div>
+          <div class="vline usr">A voice agent for our reception line.</div>
+        </div>
+        <div class="vc-foot">
+          <span class="vbtn mute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a3 3 0 013 3v6a3 3 0 01-6 0V6a3 3 0 013-3zM5 11a7 7 0 0014 0M12 18v3"/></svg></span>
+          <span class="vbtn end"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 15.5c-1.2 0-2.4-.2-3.5-.6a1 1 0 00-1 .3l-1.6 1.6a15 15 0 01-6.6-6.6l1.6-1.6a1 1 0 00.3-1C9.7 6.4 9.5 5.2 9.5 4a1 1 0 00-1-1H5a1 1 0 00-1 1 17 17 0 0017 17 1 1 0 001-1v-3.5a1 1 0 00-1-1z" transform="rotate(135 12 12)"/></svg></span>
+          <span class="vbtn spk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H3v6h3l5 4V5zM16 9a3 3 0 010 6M19 6a7 7 0 010 12"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/partials.js?v=4"></script>
+</body>
+</html>

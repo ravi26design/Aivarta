@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>AI VARTA — Upload Knowledge (Voice Agent)</title>
+<link rel="stylesheet" href="css/styles.css?v=4">
+<style>
+  .onb{height:880px}
+  .onb .dhero{height:880px}
+  .dash-tabs{position:absolute;left:40px;top:112px}
+  .onb-head{left:40px;top:196px;width:1360px}
+  .onb-card{left:40px;top:326px;width:1360px}
+  .onb-card .save-row{display:flex;justify-content:flex-end;margin-top:26px}
+  .onb-card .save-row .btn-full{width:auto;min-width:220px;border-radius:80px}
+</style>
+</head>
+<body>
+<div class="canvas onb setup-modal">
+  <section class="dhero"><div class="glow-a"></div><div class="glow-b"></div><div class="grid"></div><div class="veil"></div></section>
+
+  <div class="modal-topbar">
+    <div class="mt-brand">AI VARTA <span class="mt-sub">Voice Agent Setup</span></div>
+    <a class="mt-close" href="agents.html" onclick="if(history.length>1){history.back();return false}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+  </div>
+
+  <div class="dash-tabs"><div data-vsteps data-green="2" data-current="3"></div></div>
+
+  <div class="onb-head">
+    <h1>Upload Knowledge for <span class="grad-text">Your Voice Agent</span></h1>
+    <div class="note">Add documents and website links so your voice agent can answer questions accurately and naturally during live calls.</div>
+  </div>
+
+  <div class="onb-card">
+    <h2>Upload Documents and Website Links</h2>
+    <div class="divide"></div>
+    <div class="up-groups">
+      <div class="up-group">
+        <a class="choose" href="choose-file.html">Choose File</a>
+        <span class="fname">no file selected</span>
+        <span class="upbtn">Upload</span>
+      </div>
+      <div class="up-group">
+        <input class="url" placeholder="Enter your website URL(https://example.com)">
+        <span class="upbtn">Upload</span>
+      </div>
+    </div>
+
+    <div class="docs-sub"><b>Uploaded Knowledge</b> <span>(Upload Max 5 Documents)</span></div>
+    <div class="docs-table">
+      <div class="r h"><div>Name</div><div>Type</div><div>Action</div></div>
+      <div class="r"><div>company-profile</div><div>PDF</div><div class="act"><span class="dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0l-4-4m4 4l4-4M5 20h14"/></svg></span><span class="del"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M9 7V5h6v2M6 7l1 13h10l1-13"/></svg></span></div></div>
+      <div class="r"><div>faq-answers</div><div>DOC</div><div class="act"><span class="dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0l-4-4m4 4l4-4M5 20h14"/></svg></span><span class="del"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M9 7V5h6v2M6 7l1 13h10l1-13"/></svg></span></div></div>
+      <div class="r"><div>https://aivarta.in</div><div>LINK</div><div class="act"><span class="dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12m0 0l-4-4m4 4l4-4M5 20h14"/></svg></span><span class="del"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M9 7V5h6v2M6 7l1 13h10l1-13"/></svg></span></div></div>
+    </div>
+
+    <div class="save-row">
+      <a class="btn-full" href="agent-voice.html">Save &amp; Continue</a>
+    </div>
+  </div>
+</div>
+<script src="js/partials.js?v=4"></script>
+</body>
+</html>

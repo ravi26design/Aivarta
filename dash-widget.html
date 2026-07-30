@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>AI VARTA — Generate Widget</title>
+<link rel="stylesheet" href="css/styles.css?v=4">
+<style>
+  .onb{height:1471px}
+  .onb .dhero{height:985px}
+  .dash-tabs{top:88px}
+  .onb-head{top:170px}
+  .onb-card{top:300px}
+  .site-footer{position:absolute;top:985px;left:0}
+</style>
+</head>
+<body>
+<div class="canvas onb">
+  <section class="dhero"><div class="glow-a"></div><div class="glow-b"></div><div class="grid"></div><div class="veil"></div></section>
+  <div data-appheader="home"></div>
+  <div class="dash-tabs"><div data-dsteps data-current="4"></div></div>
+
+  <div class="onb-head">
+    <h1>Generate Your <span class="grad-text">Chatbot Widget for Website</span></h1>
+    <div class="note">Quickly generate a chatbot widget and integrate it into your website to engage visitors and provide instant support.</div>
+  </div>
+
+  <div class="onb-card">
+    <div class="card-head">
+      <h2>Widget Code</h2>
+      <div class="copy-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>Copy</div>
+    </div>
+    <div class="divide"></div>
+    <pre class="code-block">&lt;div id="yaksha-chat-widget"&gt;&lt;/div&gt;
+&lt;script&gt;
+(function () {
+  const s = document.createElement('script');
+  s.src = 'http://localhost:8000/static/js/chatbot-widget.js';
+  s.onload = () =&gt; initYakshaWidget('http://localhost:8000', 'chatbot_8c852e8d9390', {
+    botName: 'Ask Yaksha', primaryColor: '#007bff',
+    avatarUrl: 'http://localhost:8000/media/default_avatars/new1_507LIU7.jpg',
+    modelType: 'openai',
+    welcomeMessage: 'How can I help you today?'
+  });
+  document.body.appendChild(s);
+})();
+&lt;/script&gt;</pre>
+  </div>
+
+  <div data-footer></div>
+</div>
+<script src="js/partials.js?v=4"></script>
+</body>
+</html>

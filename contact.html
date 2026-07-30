@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>AI VARTA — Contact</title>
+<link rel="stylesheet" href="css/styles.css?v=4">
+<style>
+  .contact{height:1672px}
+  .contact .dhero{height:1024px}
+  .black-fill{position:absolute;top:0;left:0;width:1440px;height:1024px;background:linear-gradient(180deg,#05060a 55%,#000 100%);z-index:-1}
+  .c-head{position:absolute;left:96px;top:158px;width:900px;font-size:64px;font-weight:500;line-height:1.2;color:#fff}
+  .c-cards{position:absolute;left:96px;top:330px;display:flex;gap:48px}
+  .c-card{width:600px;border-radius:24px;padding:32px}
+  .c-card.details{background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+  .c-card.form{background:#00abff}
+  .c-card h2{font-size:28px;font-weight:600;margin-bottom:12px}
+  .details .divide{height:1px;background:var(--ink-12);margin-bottom:24px}
+  .cd-row{display:flex;gap:14px;align-items:flex-start;margin-bottom:20px;font-size:16px}
+  .cd-row .ci{width:22px;height:22px;flex:none;color:#111;margin-top:2px}
+  .cd-row .ci svg{width:22px;height:22px}
+  .cd-row b{font-weight:600}
+  .cd-row .sub{color:#333;line-height:1.5}
+  .c-map{width:536px;height:262px;border-radius:12px;overflow:hidden;border:1px solid #e2e2e2;margin-top:4px}
+  .c-map img{width:100%;height:100%;object-fit:cover}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-size:15px;margin-bottom:8px;color:#003a57;font-weight:500}
+  .field input,.field textarea{width:100%;border:1px solid rgba(0,0,0,.18);border-radius:12px;background:#1ab6ff;padding:16px;font-size:16px;font-family:inherit;color:#fff}
+  .field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.85)}
+  .field textarea{height:150px;resize:none}
+  .send-btn{width:100%;background:#fff;color:#000;border-radius:80px;padding:18px;font-size:18px;font-weight:600;margin-top:6px}
+  .site-footer{position:absolute;top:1024px;left:0}
+</style>
+</head>
+<body>
+<div class="canvas contact">
+  <div class="black-fill"></div>
+  <section class="dhero"><div class="glow-a"></div><div class="glow-b"></div><div class="grid"></div><div class="veil"></div></section>
+  <div data-header="contact"></div>
+
+  <h1 class="c-head">Connect with the<br><span class="grad-text">AI VARTA TEAM</span></h1>
+
+  <div class="c-cards">
+    <div class="c-card details">
+      <h2>Contact Details</h2>
+      <div class="divide"></div>
+      <div class="cd-row">
+        <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11a7 7 0 1114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+        <div><b>Technopark, IIT Kanpur</b><div class="sub">Indian Institute of Technology Kanpur, 401, 4th Floor, TechnoPark, National Aerosol Facility, Kanpur, Uttar Pradesh 208016</div></div>
+      </div>
+      <div class="cd-row" style="align-items:center">
+        <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5l4-1 2 5-3 2a12 12 0 006 6l2-3 5 2-1 4a2 2 0 01-2 2A16 16 0 013 7a2 2 0 011-2z"/></svg></span>
+        <div>+91 9935274672</div>
+      </div>
+      <div class="cd-row" style="align-items:center">
+        <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+        <div>sarvagy@skyaitechnologies.com</div>
+      </div>
+      <div class="cd-row" style="align-items:center">
+        <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+        <div>info@skyaitechnologies.com</div>
+      </div>
+      <div class="c-map"><img src="assets/contact_map.png" alt="AI VARTA location map"></div>
+    </div>
+
+    <div class="c-card form">
+      <h2>Any Queries?</h2>
+      <div class="field"><label>Name</label><input placeholder="Enter your name"></div>
+      <div class="field"><label>Email</label><input placeholder="Enter your email"></div>
+      <div class="field"><label>Subject</label><input placeholder="Enter your subject"></div>
+      <div class="field"><label>Message</label><textarea placeholder="Enter your message"></textarea></div>
+      <button class="send-btn">Send Your Enquiry</button>
+    </div>
+  </div>
+
+  <div data-footer></div>
+</div>
+<script src="js/partials.js?v=4"></script>
+</body>
+</html>

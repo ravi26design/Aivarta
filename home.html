@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>AI VARTA — Home</title>
+<link rel="stylesheet" href="css/styles.css?v=4">
+<style>
+  /* ---- HERO (auto-fits viewport height) ---- */
+  .hero{position:relative;width:1440px;min-height:100vh;overflow:hidden;background:#05060a;display:flex;align-items:center;padding:88px 96px 40px;box-sizing:border-box}
+  .hero-inner{position:relative;z-index:5;width:100%;display:flex;justify-content:space-between;align-items:center;gap:32px}
+  .below{position:relative;width:1440px;height:3127px}
+  .hero .glow-a{position:absolute;width:720px;height:560px;left:-40px;top:120px;
+    background:radial-gradient(closest-side,rgba(0,255,136,.35),transparent 70%);filter:blur(30px)}
+  .hero .glow-b{position:absolute;width:900px;height:640px;left:620px;top:40px;
+    background:radial-gradient(closest-side,rgba(0,171,255,.30),transparent 70%);filter:blur(30px)}
+  .hero .grid{position:absolute;inset:0;opacity:.16;
+    background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
+    background-size:53.5px 53.5px}
+  .hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15),#000)}
+  .hero-text{width:608px;display:flex;flex-direction:column;gap:48px;color:#fff}
+  .hero-text .t{display:flex;flex-direction:column;gap:24px}
+  .hero-text h1{font-size:64px;font-weight:600;line-height:1.2;letter-spacing:-1px}
+  .hero-text p{font-size:18px;font-weight:300;line-height:1.5}
+
+  /* ---- chat widget ---- */
+  .chatw{position:relative;flex:none;width:501px;height:560px;background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+  .chatw .bar{height:64px;background:var(--grad);display:flex;align-items:center;justify-content:space-between;padding:0 12px}
+  .chatw .bar .av{width:42px;height:42px;border-radius:50%;background:#fff;display:grid;place-items:center;overflow:hidden}
+  .chatw .bar .av img{width:32px;height:32px}
+  .chatw .bar .x{width:28px;height:28px;color:#fff}
+  .chatw .msg{position:absolute;left:12px;top:76px;background:#f0f0f0;border-radius:12px;padding:12px;max-width:280px;font-size:14px;font-family:'Open Sans',sans-serif}
+  .chatw .inp{position:absolute;left:12px;top:492px;width:409px;height:56px;border:1px solid var(--ink-12);border-radius:80px;display:flex;align-items:center;padding:0 24px;color:rgba(0,0,0,.5);font-size:16px;font-family:'Open Sans',sans-serif}
+  .chatw .send{position:absolute;left:433px;top:492px;width:56px;height:56px;border-radius:50%;background:var(--grad);display:grid;place-items:center}
+  .chatw .send svg{width:24px;height:24px;color:#fff}
+
+  /* ---- trusted ---- */
+  .trusted-h{position:absolute;top:96px;left:0;width:1440px;text-align:center;color:var(--slate);font-size:24px;font-weight:600}
+  .trusted{position:absolute;top:161px;left:96px;width:1248px;height:80px;display:flex;align-items:center;gap:56px;overflow:hidden}
+  .trusted .lg{font-weight:700;font-size:22px;color:#8a94a6;white-space:nowrap;opacity:.75;letter-spacing:.5px;flex:none}
+  .trusted .lg.serif{font-family:Georgia,serif;font-weight:600}
+
+  /* ---- all-in-one ---- */
+  .allin{position:absolute;top:337px;left:0;width:1440px;height:804px;background:var(--grad-soft)}
+  .allin .head{position:absolute;top:80px;left:50%;transform:translateX(-50%);width:765px;text-align:center;display:flex;flex-direction:column;gap:20px}
+  .allin .head h2{font-size:48px;font-weight:600;line-height:1.2}
+  .allin .head p{font-size:18px;line-height:1.4}
+  .cards{position:absolute;top:314px;left:96px;display:flex;gap:32px}
+
+  /* ---- steps ---- */
+  .steps-h{position:absolute;top:1237px;left:50%;transform:translateX(-50%);width:765px;text-align:center;font-size:48px;font-weight:600;line-height:1.2}
+  .steps{position:absolute;top:1386px;left:96px;width:1248px;display:flex;justify-content:space-between}
+  .steps-card{width:600px;height:660px;background:#00abff;border-radius:24px;position:relative;overflow:hidden}
+  .steps-card .shot{position:absolute;left:16px;top:16px;width:568px;height:327px;border-radius:12px;overflow:hidden;background:#fff}
+  .steps-card .shot img{width:100%;height:100%;object-fit:cover}
+  .steps-card .shot iframe{width:1440px;height:830px;border:0;transform:scale(.394444);transform-origin:top left;pointer-events:none;background:#fff}
+  .acc-item{cursor:pointer}
+  .acc-item .acc-desc{display:none}
+  .acc-item.open .acc-desc{display:block}
+  .steps-card .glass{position:absolute;left:16px;top:359px;width:568px;height:285px;background:rgba(255,255,255,.82);backdrop-filter:blur(12px);border-radius:12px;padding:16px}
+  .steps-card .glass h4{font-size:22px;font-weight:500;letter-spacing:-1px;margin-bottom:8px}
+  .steps-card .glass ul{list-style:disc;padding-left:24px;display:flex;flex-direction:column;gap:2px}
+  .steps-card .glass li{font-size:16px;font-weight:300;line-height:1.7}
+  .accordion{width:600px;display:flex;flex-direction:column;gap:16px}
+  .acc-item{display:flex;flex-direction:column;gap:24px;padding-top:0}
+  .acc-row{display:flex;align-items:center;gap:8px;justify-content:space-between}
+  .acc-row .ti{font-size:28px;font-weight:300;letter-spacing:-1.4px}
+  .acc-row .ic{width:24px;height:24px;color:#111;flex:none}
+  .acc-desc{font-size:16px;font-weight:300;line-height:1.5;color:#000;margin-top:-16px}
+  .acc-line{height:1px;background:var(--ink-12);width:600px}
+
+  /* ---- why ---- */
+  .why{position:absolute;top:2157px;left:0;width:1440px;height:484px;overflow:hidden}
+  .why .bg{position:absolute;inset:0;background:radial-gradient(120% 140% at 50% 0%,#0b3b2e 0%,#04120d 55%,#000 100%)}
+  .why .grid{position:absolute;inset:0;opacity:.12;background-image:linear-gradient(rgba(0,255,136,.4) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,136,.4) 1px,transparent 1px);background-size:48px 48px}
+  .why .inner{position:absolute;top:96px;left:50%;transform:translateX(-50%);width:822px;display:flex;flex-direction:column;align-items:center;gap:48px;text-align:center;color:#fff}
+  .why .inner h2{font-size:48px;font-weight:600;line-height:1.2}
+  .why .inner p{font-size:18px;font-weight:300;line-height:1.4}
+
+  /* ---- footer position ---- */
+  .site-footer{position:absolute;top:2641px;left:0}
+</style>
+</head>
+<body>
+<div class="canvas home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="glow-a"></div><div class="glow-b"></div>
+    <div class="grid"></div><div class="veil"></div>
+
+    <header class="site-header">
+      <a class="logo" href="home.html">AI VARTA</a>
+      <nav><a href="home.html">Home</a><a href="pricing.html">Pricing</a><a href="contact.html">Contact</a></nav>
+      <a class="btn-grad sm" href="auth-login.html">Login</a>
+    </header>
+
+    <div class="hero-inner">
+  <div class="hero-text">
+    <div class="t">
+      <h1>Engage customers with <span class="grad-text">one smart AI assistant</span></h1>
+      <p>Engage customers with one smart AI assistant that answers instantly, streamlines support, and delivers a personalized experience to boost satisfaction and save time.</p>
+    </div>
+    <a class="btn-grad" href="pricing.html" style="align-self:flex-start">Explore Plans That Grow Your Business</a>
+  </div>
+
+  <!-- CHAT WIDGET -->
+  <div class="chatw">
+    <div class="bar">
+      <div class="av"><img src="assets/chatbot_avatar.png" alt="bot"></div>
+      <div class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></div>
+    </div>
+    <div class="msg">How can I help you today?</div>
+    <div class="inp">Ask What’s on Your Mind.</div>
+    <div class="send"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg></div>
+  </div>
+    </div><!-- /hero-inner -->
+  </section>
+
+  <div class="below">
+
+  <!-- TRUSTED -->
+  <div class="trusted-h">Trusted by 100+ founders &amp; business owners</div>
+  <div class="trusted">
+    <span class="lg serif">Domino’s&nbsp;Direct</span>
+    <span class="lg">DS</span>
+    <span class="lg serif">Harris&nbsp;Teeter</span>
+    <span class="lg">BLINDS&nbsp;TO&nbsp;GO</span>
+    <span class="lg serif">Kroger</span>
+    <span class="lg">handy</span>
+    <span class="lg">riskonq</span>
+    <span class="lg">iQmetrix</span>
+  </div>
+
+  <!-- ALL-IN-ONE -->
+  <section class="allin">
+    <div class="head">
+      <h2>All-in-One Platform for AI Customer Support</h2>
+      <p>Unleash the full potential of your website with AI VARTA’s cutting-edge AI chatbot features. From intelligent conversations to seamless integrations, we’ve got you covered!</p>
+    </div>
+    <div class="cards">
+      <article class="feature-card">
+        <div class="thumb"><img src="assets/feature1_smart.jpeg" alt=""></div>
+        <h3>Smart Conversation</h3>
+        <p>Powered by advanced NLP, AI VARTA delivers context-aware, human-like responses that engage users, enhance interactions, and create memorable customer experiences.</p>
+      </article>
+      <article class="feature-card">
+        <div class="thumb"><img src="assets/feature2_data.jpeg" alt=""></div>
+        <h3>Data Ingestion</h3>
+        <p>Train your chatbot with custom data by uploading files or connecting web content. Ensure it’s tailored to your business needs and delivers accurate, personalized responses.</p>
+      </article>
+      <article class="feature-card">
+        <div class="thumb"><img src="assets/feature3_function.jpeg" alt=""></div>
+        <h3>Function Calls</h3>
+        <p>Extend your chatbot’s capabilities with seamless custom API integrations and real-time actions, enabling it to perform complex tasks, automate workflows, and deliver a truly powerful, dynamic solution.</p>
+      </article>
+      <article class="feature-card">
+        <div class="thumb"><img src="assets/feature4_secure.png" alt=""></div>
+        <h3>Secure &amp; Scalable</h3>
+        <p>With enterprise-grade security, robust infrastructure, and unmatched scalability, your chatbot remains reliable, protected, and ready to deliver exceptional performance under any level of demand.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- STEPS -->
+  <div class="steps-h">Follow these steps to start<br>using our products.</div>
+  <div class="steps">
+    <div class="steps-card">
+      <div class="shot"><iframe id="stepFrame" src="auth-company.html" title="Step preview" scrolling="no" loading="lazy"></iframe></div>
+      <div class="glass">
+        <h4>What you’ll need:</h4>
+        <ul>
+          <li>Valid email address</li>
+          <li>Strong password (8+ characters)</li>
+          <li>Basic contact information</li>
+          <li>GST Number (optional)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="accordion" id="acc"></div>
+  </div>
+
+  <!-- WHY -->
+  <section class="why">
+    <div class="bg"></div><div class="grid"></div>
+    <div class="inner">
+      <div>
+        <h2>Why Businesses Choose<br><span class="grad-text">AI VARTA</span></h2>
+      </div>
+      <p>Experience an adaptable chatbot powered by cutting-edge AI and an intuitive interface. Designed for startups and enterprises, AI VARTA scales seamlessly to match your business growth.</p>
+      <a class="btn-grad" href="pricing.html">Find the Right Plan for You</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="head">Company</div>
+        <div class="links">
+          <a href="home.html">Home</a>
+          <a href="pricing.html">Pricing </a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="refund.html">Refund Policy</a>
+          <a href="terms.html">Terms and Conditions</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="head">Contact</div>
+        <div class="links">
+          <div class="footer-row">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11a7 7 0 1114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+            <div class="muted-14"><b>Technopark, IIT Kanpur</b><br>Indian Institute of Technology Kanpur, 401, 4th Floor, TechnoPark, National Aerosol Facility, Kanpur, Uttar Pradesh 208016</div>
+          </div>
+          <div class="footer-row" style="align-items:center">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5l4-1 2 5-3 2a12 12 0 006 6l2-3 5 2-1 4a2 2 0 01-2 2A16 16 0 013 7a2 2 0 011-2z"/></svg></span>
+            <div class="muted-14">+91 9935274672</div>
+          </div>
+          <div class="footer-row" style="align-items:center">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+            <div class="muted-14">info@skyaitechnologies.com</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="head">Find us on</div>
+        <div class="links">
+          <p>LinkedIn</p><p>Instagram</p><p>Facebook</p><p>YouTube</p>
+          <p>© 2025 SKYAI. All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </div><!-- /below -->
+</div>
+
+<style>
+/* plus icon drawn with pseudo elements */
+.ic.plus{position:relative}
+.ic.plus::before,.ic.plus::after{content:"";position:absolute;background:#111;border-radius:2px}
+.ic.plus::before{left:11px;top:4px;width:2px;height:16px}
+.ic.plus::after{left:4px;top:11px;width:16px;height:2px}
+</style>
+<script>
+(function () {
+  var STEPS = [
+    ['Register', 'auth-company.html', 'Create your account to get started with our platform and unlock all features.'],
+    ['Login', 'auth-login.html', 'Sign in securely with your email and a one-time password (OTP).'],
+    ['Choose Plan', 'onboard-choose-plan.html', 'Pick the plan that fits your business — Starter, Basic or Pro.'],
+    ['Make Payment', 'payment.html', 'Pay quickly via UPI QR or card and activate your subscription instantly.'],
+    ['Upload Documents', 'onboard-upload.html', 'Train your chatbot by uploading files or adding your website links.'],
+    ['Customize Chatbot', 'onboard-customize.html', 'Set the name, role, colours, avatar and model of your assistant.'],
+    ['Generate Widget', 'onboard-widget.html', 'Generate a ready-to-use embed code for your chatbot widget.'],
+    ['Integrate Chatbot Widget', 'onboard-integrate.html', 'Paste the snippet into your website and go live in minutes.']
+  ];
+  var CROSS = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+  var acc = document.getElementById('acc');
+  var frame = document.getElementById('stepFrame');
+  var open = 0;
+  acc.innerHTML = STEPS.map(function (s, i) {
+    return '<div class="acc-item" data-i="' + i + '">' +
+             '<div class="acc-row"><span class="ti">' + s[0] + '</span><span class="ic"></span></div>' +
+             '<p class="acc-desc">' + s[2] + '</p>' +
+             '<div class="acc-line"></div>' +
+           '</div>';
+  }).join('');
+  var items = Array.prototype.slice.call(acc.children);
+  function render() {
+    items.forEach(function (el, i) {
+      var on = i === open;
+      el.classList.toggle('open', on);
+      var ic = el.querySelector('.ic');
+      ic.className = 'ic' + (on ? '' : ' plus');
+      ic.innerHTML = on ? CROSS : '';
+    });
+    if (frame.getAttribute('data-cur') !== STEPS[open][1]) {
+      frame.src = STEPS[open][1];
+      frame.setAttribute('data-cur', STEPS[open][1]);
+    }
+  }
+  items.forEach(function (el, i) {
+    el.addEventListener('click', function () { open = i; render(); });
+  });
+  render();
+})();
+</script>
+<script>
+// Reflect logged-in state in the (static) home header. Login persists until explicit Logout.
+(function () {
+  var authed = false;
+  try { authed = localStorage.getItem('aivarta_loggedin') === '1'; } catch (e) {}
+  var hdr = document.querySelector('.site-header');
+  if (!hdr) return;
+  var loginBtn = hdr.querySelector('.btn-grad.sm');
+  var nav = hdr.querySelector('nav');
+  if (authed) {
+    if (loginBtn) {
+      var p = document.createElement('a');
+      p.className = 'profile';
+      p.href = 'agents.html';
+      p.innerHTML = '<span class="pav"><img src="assets/user.png" alt=""></span>' +
+                    '<span class="pname">John Doe</span>' +
+                    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>';
+      loginBtn.replaceWith(p);
+    }
+    if (nav) {
+      nav.innerHTML =
+        '<a href="home.html">Home</a>' +
+        '<a href="agents.html">My Agents</a>' +
+        '<a href="leads.html">Leads</a>' +
+        '<a href="chatlog.html">Chat-logs</a>' +
+        '<a href="pricing.html">Pricing</a>' +
+        '<a href="contact.html">Contact</a>';
+    }
+  } else if (loginBtn) {
+    loginBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      try { localStorage.setItem('aivarta_next', 'home.html'); } catch (ex) {}
+      location.href = 'auth-login.html';
+    });
+  }
+})();
+</script>
+</body>
+</html>

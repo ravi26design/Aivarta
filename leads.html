@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>AI VARTA — Leads</title>
+<link rel="stylesheet" href="css/styles.css?v=4">
+<style>
+  .admin{width:1440px;min-height:1181px;background:#f4f5f6;margin:0 auto;position:relative}
+  .admin-top{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:#f4f5f6}
+  .admin-top .brand{display:flex;align-items:center;gap:16px}
+  .admin-top .brand b{font-weight:700;font-size:20px}
+  .admin-top .brand .sec{color:#222;border-left:1px solid #cfcfcf;padding-left:16px;font-size:16px}
+  .admin-search{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #e2e4e8;border-radius:80px;padding:9px 18px;width:230px;color:#9aa0a8;font-size:14px}
+  .admin-close{cursor:pointer;color:#333}
+  .leads-wrap{margin:12px 16px;background:#fff;border-radius:16px;padding:4px 28px;box-shadow:0 4px 20px rgba(0,0,0,.04)}
+  .lrow{display:grid;grid-template-columns:1.1fr 1.6fr 1.2fr 1.3fr;padding:20px 8px;border-bottom:1px solid #f1f1f1;font-size:15px;align-items:center}
+  .lrow.lh{font-weight:600;color:#00abff;border-bottom:1px solid #ececec}
+  .lrow:last-child{border-bottom:none}
+  .pager{display:flex;align-items:center;justify-content:space-between;padding:20px 28px}
+  .pager .left{display:flex;align-items:center;gap:10px;color:#555;font-size:14px}
+  .pager select{border:1px solid #e2e4e8;border-radius:8px;padding:6px 10px}
+  .pager .pages{display:flex;gap:8px}
+  .pager .pg{width:36px;height:36px;border:1px solid #e2e4e8;border-radius:8px;display:grid;place-items:center;color:#555;font-size:14px}
+  .pager .pg.active{border-color:#00abff;color:#00abff}
+</style>
+</head>
+<body>
+<div class="admin">
+  <div class="admin-top">
+    <div class="brand"><a href="home.html" style="color:inherit"><b>AI VARTA</b></a><span class="sec">Leads</span></div>
+    <div style="display:flex;align-items:center;gap:20px">
+      <div class="admin-search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>Search User...</div>
+      <a class="admin-close" href="agents.html" onclick="if(history.length>1){history.back();return false}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+    </div>
+  </div>
+
+  <div class="leads-wrap">
+    <div class="lrow lh"><div>Name</div><div>Email</div><div>Phone Number</div><div>First Reach Date &amp; Time</div></div>
+    <div class="lrow"><div>Bessie Cooper</div><div>alma.lawson@example.com</div><div>+91-904-259-7632</div><div>27 August 2025 at 04:20pm</div></div>
+    <div class="lrow"><div>Kristin Watson</div><div>tim.jennings@example.com</div><div>+91-905-837-2918</div><div>27 August 2025 at 04:10pm</div></div>
+    <div class="lrow"><div>Ralph Edwards</div><div>debbie.baker@example.com</div><div>+91-904-259-7632</div><div>27 August 2025 at 04:00pm</div></div>
+    <div class="lrow"><div>Jacob Jones</div><div>curtis.weaver@example.com</div><div>+91-863-647-3730</div><div>27 August 2025 at 03:50pm</div></div>
+    <div class="lrow"><div>Cody Fisher</div><div>deanna.curtis@example.com</div><div>+91-386-754-5365</div><div>27 August 2025 at 03:40pm</div></div>
+    <div class="lrow"><div>Darrell Steward</div><div>michael.mitc@example.com</div><div>+91-407-354-1542</div><div>27 August 2025 at 03:35pm</div></div>
+    <div class="lrow"><div>Jerome Bell</div><div>bill.sanders@example.com</div><div>+91-416-776-3100</div><div>27 August 2025 at 03:30pm</div></div>
+    <div class="lrow"><div>Ronald Richards</div><div>jessica.hanson@example.com</div><div>+91-305-246-7443</div><div>27 August 2025 at 03:25pm</div></div>
+    <div class="lrow"><div>Brooklyn Simmons</div><div>tanya.hill@example.com</div><div>+91-416-776-3100</div><div>27 August 2025 at 03:20pm</div></div>
+    <div class="lrow"><div>Dianne Russell</div><div>michelle.rivera@example.com</div><div>+91-772-249-4486</div><div>27 August 2025 at 03:15pm</div></div>
+    <div class="lrow"><div>Courtney Henry</div><div>nevaeh.simmons@example.com</div><div>+91-386-754-5365</div><div>27 August 2025 at 03:10pm</div></div>
+    <div class="lrow"><div>Albert Flores</div><div>nathan.roberts@example.com</div><div>+91-386-754-5365</div><div>27 August 2025 at 03:05pm</div></div>
+    <div class="lrow"><div>Wade Warren</div><div>felicia.reid@example.com</div><div>+91-407-354-1542</div><div>27 August 2025 at 03:00pm</div></div>
+    <div class="lrow"><div>Jenny Wilson</div><div>jackson.graham@example.com</div><div>+91-407-354-1542</div><div>27 August 2025 at 02:55pm</div></div>
+    <div class="lrow"><div>Kathryn Murphy</div><div>dolores.chambers@example.com</div><div>+91-863-647-3730</div><div>27 August 2025 at 02:50pm</div></div>
+    <div class="lrow"><div>Darlene Robertson</div><div>sara.cruz@example.com</div><div>+91-416-776-3100</div><div>27 August 2025 at 02:45pm</div></div>
+    <div class="lrow"><div>Guy Hawkins</div><div>georgia.young@example.com</div><div>+91-863-647-3730</div><div>27 August 2025 at 02:40pm</div></div>
+    <div class="lrow"><div>Robert Fox</div><div>kenzi.lawson@example.com</div><div>+91-904-259-7632</div><div>27 August 2025 at 02:35pm</div></div>
+    <div class="lrow"><div>Annette Black</div><div>willie.jennings@example.com</div><div>+91-905-837-2918</div><div>27 August 2025 at 02:30pm</div></div>
+    <div class="lrow"><div>Floyd Miles</div><div>debra.holt@example.com</div><div>+91-416-776-3100</div><div>27 August 2025 at 02:25pm</div></div>
+
+    <div class="pager">
+      <div class="left">Showing <select><option>20</option><option>50</option></select> <span><b>1–25</b> of <b>270</b> items</span></div>
+      <div class="pages">
+        <span class="pg">«</span><span class="pg">‹</span>
+        <span class="pg active">1</span><span class="pg">2</span><span class="pg">3</span><span class="pg">4</span>
+        <span class="pg">›</span><span class="pg">»</span>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

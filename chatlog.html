@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>AI VARTA — Chat Logs</title>
+<link rel="stylesheet" href="css/styles.css?v=4">
+<style>
+  .cl{width:1440px;height:1024px;background:#fff;margin:0 auto;display:grid;grid-template-columns:388px 1fr;grid-template-rows:64px 1fr}
+  .cl-top{grid-column:1 / 2;display:flex;align-items:center;gap:16px;padding:0 24px;border-bottom:1px solid #eee}
+  .cl-top b{font-weight:700;font-size:20px}
+  .cl-top .sec{color:#222;border-left:1px solid #cfcfcf;padding-left:16px}
+  .cl-side{grid-column:1 / 2;grid-row:2;border-right:1px solid #eee;overflow:auto;padding:16px}
+  .cl-search{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #e2e4e8;border-radius:80px;padding:11px 16px;color:#9aa0a8;font-size:14px;margin-bottom:12px}
+  .conv{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-radius:8px;font-size:15px;cursor:pointer}
+  .conv:hover{background:#f6f7f8}
+  .conv.sel{background:#e8f4fd}
+  .conv .tm{color:#9aa0a8;font-size:12px}
+  .cl-main{grid-column:2;grid-row:1 / 3;display:flex;flex-direction:column}
+  .cl-head{height:64px;display:flex;align-items:center;gap:14px;padding:0 24px;border-bottom:1px solid #eee}
+  .cl-head .u{display:flex;align-items:center;gap:8px;font-weight:700}
+  .cl-head .u .dot{width:20px;height:20px;border-radius:50%;background:#00abff;display:grid;place-items:center;color:#fff}
+  .cl-head .u .dot svg{width:12px;height:12px}
+  .cl-head .meta{color:#9aa0a8;font-weight:400;border-left:1px solid #e4e4e4;padding-left:14px}
+  .cl-head .x{margin-left:auto;color:#333}
+  .cl-body{flex:1;padding:24px 32px;display:flex;flex-direction:column;gap:18px;overflow:auto}
+  .bub{max-width:520px;padding:14px 18px;border-radius:12px;font-size:14px;line-height:1.5}
+  .bub.bot{align-self:flex-end;background:#bfe6fb}
+  .bub.usr{align-self:flex-start;background:#efefef}
+  .bub .tm{display:block;text-align:right;color:#8a8a8a;font-size:11px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="cl">
+  <div class="cl-top"><a href="home.html" style="color:inherit"><b>AI VARTA</b></a><span class="sec">Chat-logs</span></div>
+
+  <div class="cl-side">
+    <div class="cl-search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>Search User...</div>
+    <div class="conv sel"><span>Where to buy Axis</span><span class="tm">10:47 PM</span></div>
+    <div class="conv"><span>Axis product purchase guidance</span><span class="tm">10:47 PM</span></div>
+    <div class="conv"><span>Find a Distributor</span><span class="tm">10:47 PM</span></div>
+    <div class="conv"><span>Authorized Partners</span><span class="tm">10:47 PM</span></div>
+    <div class="conv"><span>Purchase Channels</span><span class="tm">10:47 PM</span></div>
+    <div class="conv"><span>Where to Purchase</span><span class="tm">10:47 PM</span></div>
+    <div class="conv"><span>Buy from Our Partners</span><span class="tm">10:47 PM</span></div>
+    <div class="conv"><span>Locate a Reseller</span><span class="tm">10:47 PM</span></div>
+    <div class="conv"><span>Official Sales Channels</span><span class="tm">10:47 PM</span></div>
+    <div class="conv"><span>How to Buy</span><span class="tm">10:47 PM</span></div>
+    <div class="conv"><span>Esther Howard</span><span class="tm">10:47 PM</span></div>
+    <div class="conv"><span>Find Axis Products</span><span class="tm">10:47 PM</span></div>
+    <div class="conv"><span>Leslie Alexander</span><span class="tm">10:47 PM</span></div>
+    <div class="conv"><span>Purchase Options</span><span class="tm">10:47 PM</span></div>
+  </div>
+
+  <div class="cl-main">
+    <div class="cl-head">
+      <div class="u"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg></span>John Doe</div>
+      <div class="meta">johndoe@gmail.com</div>
+      <div class="meta">+91-9212342211</div>
+      <a class="x" href="agents.html" onclick="if(history.length>1){history.back();return false}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+    </div>
+    <div class="cl-body">
+      <div class="bub bot">How can I help you today?</div>
+      <div class="bub usr">I want to buy a product of axis but your website is not ecommerce so where can I buy your products.<span class="tm">10:47 PM</span></div>
+      <div class="bub bot">Thank you for your interest in AXIS Solutions Limited. We do not have an e-commerce platform on our website. To purchase our products, please contact us directly at our registered office in Ahmedabad, Gujarat, India. You can reach us at +919909906354 or email us at info@axisindia.in. Our team will assist you with the product selection and purchase process. Thank you for considering AXIS for your needs.<span class="tm">10:47 PM</span></div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var items = Array.prototype.slice.call(document.querySelectorAll('.cl-side .conv'));
+  var title = document.querySelector('.cl-head .u');
+  items.forEach(function(c){
+    c.addEventListener('click', function(){
+      items.forEach(function(x){ x.classList.remove('sel'); });
+      c.classList.add('sel');
+    });
+  });
+})();
+</script>
+</body>
+</html>

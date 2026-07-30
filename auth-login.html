@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>AI VARTA — Login</title>
+<link rel="stylesheet" href="css/styles.css?v=4">
+</head>
+<body>
+<div class="overlay">
+  <div class="modal" style="width:608px">
+    <div class="modal-head">
+      <h2>Login</h2>
+      <a class="x" href="home.html" onclick="return aivartaCancelAuth()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+    </div>
+    <div class="f">
+      <label>Email</label>
+      <input type="email" placeholder="Enter your email">
+    </div>
+    <a class="btn-full" href="auth-otp.html">Send OTP</a>
+  </div>
+</div>
+<script>
+  // If the user opened login from a gated action and dismisses it,
+  // send them back to the page they came from (e.g. Pricing).
+  function aivartaCancelAuth(){
+    try{
+      var next = localStorage.getItem('aivarta_next');
+      if(next){ localStorage.removeItem('aivarta_next'); location.href = next; return false; }
+    }catch(e){}
+    return true; // default: home
+  }
+</script>
+</body>
+</html>
