@@ -183,7 +183,7 @@
     ['Choose a Number', 'agent-voice-number.html'],
     ['Upload Knowledge', 'agent-voice-upload.html'],
     ['Configure Voice', 'agent-voice.html'],
-    ['Go Live', 'agents.html']
+    ['Go Live', 'agent-voice-live.html']
   ];
   function vsteps(green, current) {
     green = parseInt(green || '0', 10);
