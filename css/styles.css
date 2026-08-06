@@ -400,7 +400,19 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .tbadge.active::before{content:"";width:6px;height:6px;border-radius:50%;background:#12b76a;margin-right:6px}
 .tbadge.draft{background:#fff4e5;color:#b45309}
 .tbadge.draft::before{content:"";width:6px;height:6px;border-radius:50%;background:#f59e0b;margin-right:6px}
+.tbadge.expired{background:#fdeceb;color:#c01b1b}
+.tbadge.expired::before{content:"";width:6px;height:6px;border-radius:50%;background:#e5484d;margin-right:6px}
 .tbadge.plan-tag{background:#f1f4f9;color:#475467}
+.plan-valid{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;margin:-2px 0 2px}
+.plan-valid::before{content:"";width:7px;height:7px;border-radius:50%;flex:none}
+.plan-valid.ok{color:#0a9d52}
+.plan-valid.ok::before{background:#12b76a}
+.plan-valid.bad{color:#c01b1b}
+.plan-valid.bad::before{background:#e5484d}
+.plan-valid.pending{color:#b45309}
+.plan-valid.pending::before{background:#f59e0b}
+.agent-card.is-expired{border-color:#f6cfce;background:linear-gradient(#fff,#fff) padding-box,#fff}
+.agent-card.is-expired .agent-usage i{background:#e5484d!important}
 .usage-row{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:#667085;margin-bottom:8px}
 .usage-row b{color:#101828;font-weight:700}
 .agent-usage{height:8px;background:#eef1f5;border-radius:20px;overflow:hidden}
@@ -409,6 +421,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .agent-actions{display:flex;gap:10px;margin-top:2px}
 .agent-actions .manage{flex:1;text-align:center;background:#0e1116;color:#fff;border-radius:12px;padding:12px;font-size:14px;font-weight:600;transition:background .15s}
 .agent-actions .manage:hover{background:#000}
+.agent-actions .manage.renew{background:#e5484d}
+.agent-actions .manage.renew:hover{background:#c01b1b}
 .agent-actions .ghost{width:46px;display:grid;place-items:center;border:1px solid #e4e7ec;border-radius:12px;color:#667085;transition:.15s}
 .agent-actions .ghost:hover{border-color:#00abff;color:#00abff;background:#f5fcff}
 .agent-actions .ghost svg{width:20px;height:20px}

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1440">
 <title>AI VARTA — My Agents</title>
-<link rel="stylesheet" href="css/styles.css?v=9">
+<link rel="stylesheet" href="css/styles.css?v=10">
 </head>
 <body>
 <div class="appwrap">
@@ -23,7 +23,8 @@
         <div class="stat"><div class="n">4</div><div class="l">Total Agents</div></div>
         <div class="stat"><div class="n">2</div><div class="l">Chat Agents</div></div>
         <div class="stat"><div class="n">2</div><div class="l">Voice Agents</div></div>
-        <div class="stat"><div class="n">3</div><div class="l">Active Subscriptions</div></div>
+        <div class="stat"><div class="n">2</div><div class="l">Active Plans</div></div>
+        <div class="stat"><div class="n">1</div><div class="l">Expired Plans</div></div>
       </div>
     </div>
   </section>
@@ -44,6 +45,7 @@
           <div class="ac-name"><h3>Support Assistant</h3><div class="sub">Customer support · Website</div></div>
         </div>
         <div class="badges"><span class="tbadge chat">CHAT</span><span class="tbadge active">ACTIVE</span><span class="tbadge plan-tag">PRO PLAN</span></div>
+        <div class="plan-valid ok">Plan active · renews 15 Sep 2026</div>
         <div>
           <div class="usage-row"><span>Messages used</span><span><b>3,240</b> / 8,000</span></div>
           <div class="agent-usage"><i style="width:40%"></i></div>
@@ -52,20 +54,21 @@
         <div class="agent-actions"><a class="manage" href="dash-integrate.html">Manage</a><a class="ghost" href="chatlog.html" title="View chat logs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 01-11.3 7.3L4 20l.7-5.7A8 8 0 1121 12z"/></svg></a></div>
       </div>
 
-      <!-- Chat agent -->
-      <div class="agent-card">
+      <!-- Chat agent (plan expired) -->
+      <div class="agent-card is-expired">
         <button class="ac-menu"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
         <div class="ac-top">
           <span class="ac-ic chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 01-11.3 7.3L4 20l.7-5.7A8 8 0 1121 12z"/></svg></span>
           <div class="ac-name"><h3>Sales Helper Bot</h3><div class="sub">Lead capture · Landing page</div></div>
         </div>
-        <div class="badges"><span class="tbadge chat">CHAT</span><span class="tbadge active">ACTIVE</span><span class="tbadge plan-tag">BASIC PLAN</span></div>
+        <div class="badges"><span class="tbadge chat">CHAT</span><span class="tbadge expired">EXPIRED</span><span class="tbadge plan-tag">BASIC PLAN</span></div>
+        <div class="plan-valid bad">Plan expired · 02 Aug 2026 · renew to reactivate</div>
         <div>
-          <div class="usage-row"><span>Messages used</span><span><b>1,120</b> / 3,000</span></div>
-          <div class="agent-usage"><i style="width:37%"></i></div>
-          <div class="usage-hint">1,880 messages left · 37% used</div>
+          <div class="usage-row"><span>Messages used</span><span><b>3,000</b> / 3,000</span></div>
+          <div class="agent-usage"><i style="width:100%"></i></div>
+          <div class="usage-hint">0 messages left · plan lapsed · agent paused</div>
         </div>
-        <div class="agent-actions"><a class="manage" href="dash-integrate.html">Manage</a><a class="ghost" href="chatlog.html" title="View chat logs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 01-11.3 7.3L4 20l.7-5.7A8 8 0 1121 12z"/></svg></a></div>
+        <div class="agent-actions"><a class="manage renew" href="pricing.html">Renew Plan</a><a class="ghost" href="chatlog.html" title="View chat logs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 01-11.3 7.3L4 20l.7-5.7A8 8 0 1121 12z"/></svg></a></div>
       </div>
 
       <!-- Voice agent -->
@@ -76,6 +79,7 @@
           <div class="ac-name"><h3>Reception Voice Bot</h3><div class="sub">Inbound calls · +91 80-4718-2200</div></div>
         </div>
         <div class="badges"><span class="tbadge voice">VOICE</span><span class="tbadge active">ACTIVE</span><span class="tbadge plan-tag">AUDIO CALL</span></div>
+        <div class="plan-valid ok">Plan active · renews 28 Aug 2026</div>
         <div>
           <div class="usage-row"><span>Call minutes used</span><span><b>2,300</b> / 5,000</span></div>
           <div class="agent-usage"><i style="width:46%"></i></div>
@@ -92,6 +96,7 @@
           <div class="ac-name"><h3>Support Voice Line</h3><div class="sub">Setup in progress</div></div>
         </div>
         <div class="badges"><span class="tbadge voice">VOICE</span><span class="tbadge draft">DRAFT</span><span class="tbadge plan-tag">AUDIO CALL</span></div>
+        <div class="plan-valid pending">No active plan · finish setup to subscribe</div>
         <div>
           <div class="usage-row"><span>Call minutes used</span><span><b>0</b> / 5,000</span></div>
           <div class="agent-usage"><i style="width:2%"></i></div>
